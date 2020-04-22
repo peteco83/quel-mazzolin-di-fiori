@@ -55,6 +55,77 @@
       "price": "8.00"
     }
   ],
-  "orders": [],
-  "clients": []
+  "orders": [
+    {
+      "id": "qNre1-Zzv",
+      "sort": "Pizza",
+      "name": "Calabresa",
+      "quantity": 1
+    },
+    {
+      "id": "ZG9PCTs--",
+      "sort": "Coffee",
+      "name": "Espresso",
+      "quantity": 5
+    },
+    {
+      "id": "SjIFPeNXr",
+      "sort": "Coffee",
+      "name": "Double Espresso",
+      "quantity": 3
+    },
+    {
+      "id": "lGsP-xu-O",
+      "sort": "Pizzas",
+      "name": "Prosciutto e funghi",
+      "quantity": 2
+    }
+  ],
+  "clients": [
+    {
+      "id": "Y_TXOqYQU",
+      "name": "Peter",
+      "lastname": "Petela",
+      "email": "peterpetela@gmail.com",
+      "tel": "030212132",
+      "address": "Lutherstr. 8",
+      "postcode": "13156"
+    },
+    {
+      "id": "drmWWIiuo",
+      "name": "Giancarlo",
+      "lastname": "Giardino",
+      "email": "giangiardi@gmail.com",
+      "tel": "015498754321",
+      "address": "Turmstr. 5",
+      "postcode": "10015"
+    },
+    {
+      "id": "YfKsCrkJm",
+      "name": "Carlo",
+      "lastname": "Rossi",
+      "email": "crossi@gmail.com",
+      "tel": "0165468744",
+      "address": "Peterstr. 28",
+      "postcode": "10555"
+    },
+    {
+      "id": "dvDLYRRH5",
+      "name": "Hans",
+      "lastname": "Mueller",
+      "email": "hansimueller@gmail.com",
+      "tel": "0178654987",
+      "address": "Schul. 2",
+      "postcode": "10555"
+    },
+    {
+      "id": "VA9UuuZib",
+      "name": "Hans",
+      "lastname": "Mueller",
+      "email": "hansimueller@gmail.com",
+      "tel": "0178654987",
+      "address": "Schul. 2",
+      "postcode": "10555"
+    }
+  ]
 }
