@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": "SmSt7SKHA",
+      "sort": "Hot Beverage",
+      "name": "Espresso",
+      "price": "1.50"
+    },
+    {
+      "id": "YoPWso6j9",
+      "sort": "Hot Beverage",
+      "name": "Coffee with milk",
+      "price": "1.80"
+    },
+    {
+      "id": "pW8-gxK6_",
+      "sort": "Hot Beverage",
+      "name": "Cappuccino",
+      "price": "2.50"
+    },
+    {
+      "id": "R3e6Sjfi2",
+      "sort": "Hot Beverage",
+      "name": "Double Espresso",
+      "price": "2.50"
+    },
+    {
+      "id": "dzZapOLOY",
+      "sort": "Pizzas",
+      "name": "Margherita",
+      "price": "6.50"
+    },
+    {
+      "id": "L4qLDQZan",
+      "sort": "Pizzas",
+      "name": "4 Formaggi",
+      "price": "9.00"
+    },
+    {
+      "id": "BWdEMFDW0",
+      "sort": "Pizzas",
+      "name": "4 Stagioni",
+      "price": "9.50"
+    },
+    {
+      "id": "C2-NmuziI",
+      "sort": "Pizzas",
+      "name": "Prosciuto e funghi",
+      "price": "8.00"
+    },
+    {
+      "id": "rJr5dN5ZC",
+      "sort": "Pizzas",
+      "name": "Calabresa",
+      "price": "8.00"
+    }
+  ],
+  "orders": [],
+  "clients": []
+}
