@@ -20,7 +20,7 @@ const clientSchema = new Schema({
     // we are not going to use the virtuals
 })
 
-UserSchema.virtual("fullName").get(function(){ 
+clientSchema.virtual("fullName").get(function(){ 
     return `${this.firstName} ${this.lastName}`
 })
 
