@@ -10,7 +10,7 @@ const clientsRoute = require("./routes/clientsRoute")
 
 const port = process.env.PORT || 3000
 
-mongoose.connect("mongodb://127.0.0.1:27017/restaurant-database", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb://127.0.0.1:27017/restaurant-database", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 mongoose.connection.on("error", (err) => console.log(err))
 mongoose.connection.on("open", () => console.log("database connected"))
 

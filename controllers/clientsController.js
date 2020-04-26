@@ -50,15 +50,15 @@ exports.putClient = async(req, res, next) => {
     const {id} = req.params
     // client.id = shortid.generate()
     // db.get("clients").find({id}).assign(client).write()
-    const client = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password
-    }
+    
     try {
         
-        Client.findByIdAndUpdate(id, client)
+        const client = await Client.findByIdAndUpdate(id, {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password
+        } )
         // client.save()
 
         
@@ -70,8 +70,13 @@ exports.putClient = async(req, res, next) => {
     
 }
 
-exports.deleteClient = (req, res, next) => {
+exports.deleteClient = async (req, res, next) => {
    const {id} = req.params
-   const client = db.get("clients").remove({id}).write()
-   res.json({success: true, client: client})
+   try {
+        const deletedClient = await Client.findByIdAndDelete(id)
+        res.json({success: true, client: deletedClient})
+   } catch(err) {
+       next(err)
+   }
 }
+
