@@ -1,6 +1,6 @@
 const createError = require("http-errors")
-const db = require("../models/db")
-const shortid = require('shortid');
+// const db = require("../models/db")
+// const shortid = require('shortid');
 const Client = require("../models/clientsSchema")
 
 exports.getClients = async(req,res,next) => {
