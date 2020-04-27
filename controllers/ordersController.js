@@ -25,18 +25,12 @@ exports.getOrder = async (req,res,next) => {
     
 }
 
-exports.postOrder = (req,res,next) => {
-    // db.get("orders").push(req.body).last().assign({id:shortid.generate()}).write()
+exports.postOrder = async(req,res,next) => {
     try {
 
-    const order = new Order({
-        sortof: req.body.sortof,
-        name: req.body.name,
-        quantity: req.body.quantity,
-    })
-    order.save()
-
-    res.json({success: true, order: req.body})
+    const order = new Order(req.body)
+    await order.save()
+    res.json({success: true, order: order})
     }
     catch(err) {
         next(err)
@@ -45,16 +39,13 @@ exports.postOrder = (req,res,next) => {
 
 exports.putOrder = async(req, res, next) => {
     const {id} = req.params
+    const order = req.body
     
     try {
         
-        const order = await Order.findByIdAndUpdate(id, {
-            sortof: req.body.sortof,
-            name: req.body.name,
-            quantity: req.body.quantity,
-        } )
-        
-        res.json({success:true, order: order})
+        const updatedOrder = await Order.findByIdAndUpdate(id, order, {new:true})
+        if(!updatedOrder) throw createError(500)
+        res.json({success:true, order: updatedOrder})
     } catch(err) {
         next(err)
     }
@@ -66,6 +57,7 @@ exports.deleteOrder = async (req, res, next) => {
    const {id} = req.params
    try {
         const deletedOrder = await Order.findByIdAndDelete(id)
+        if(!deletedOrder) throw createError(404)
         res.json({success: true, order: deletedOrder})
    } catch(err) {
        next(err)

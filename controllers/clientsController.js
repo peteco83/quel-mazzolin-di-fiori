@@ -1,7 +1,6 @@
 const createError = require("http-errors")
-// const db = require("../models/db")
-// const shortid = require('shortid');
 const Client = require("../models/clientsSchema")
+const faker = require("faker/locale/de")
 
 exports.getClients = async(req,res,next) => {
     try {
@@ -27,19 +26,11 @@ exports.getClient = async (req,res,next) => {
     
 }
 
-exports.postClient = (req,res,next) => {
-    // db.get("clients").push(req.body).last().assign({id:shortid.generate()}).write()
+exports.postClient = async(req,res,next) => {
     try {
-
-    const client = new Client({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: req.body.password
-    })
-    client.save()
-
-    res.json({success: true, client: req.body})
+    const client = new Client(req.body)    
+    await client.save()
+    res.json({success: true, client: client})
     }
     catch(err) {
         next(err)
@@ -47,22 +38,13 @@ exports.postClient = (req,res,next) => {
 }
 
 exports.putClient = async(req, res, next) => {
-    const {id} = req.params
-    // client.id = shortid.generate()
-    // db.get("clients").find({id}).assign(client).write()
-    
+    const {id} = req.params    
+    const client = req.body
     try {
         
-        const client = await Client.findByIdAndUpdate(id, {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            password: req.body.password
-        } )
-        // client.save()
-
-        
-        res.json({success:true, client: client})
+        const updateClient = await Client.findByIdAndUpdate(id, client, {new: true})
+        if(!updateClient) throw createError(500)
+        res.json({success:true, client: updateClient})
     } catch(err) {
         next(err)
     }
@@ -74,6 +56,7 @@ exports.deleteClient = async (req, res, next) => {
    const {id} = req.params
    try {
         const deletedClient = await Client.findByIdAndDelete(id)
+        if(!deletedClient) throw createError(404)
         res.json({success: true, client: deletedClient})
    } catch(err) {
        next(err)

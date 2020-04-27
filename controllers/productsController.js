@@ -25,18 +25,12 @@ exports.getProduct = async (req,res,next) => {
     
 }
 
-exports.postProduct = (req,res,next) => {
-    // db.get("products").push(req.body).last().assign({id:shortid.generate()}).write()
+exports.postProduct = async(req,res,next) => {
+    
     try {
-
-    const product = new Product({
-        sortof: req.body.sortof,
-        name: req.body.name,
-        price: req.body.price,
-    })
-    product.save()
-
-    res.json({success: true, product: req.body})
+    const product = new Product(req.body)
+    await product.save()
+    res.json({success: true, product: product})
     }
     catch(err) {
         next(err)
@@ -45,18 +39,13 @@ exports.postProduct = (req,res,next) => {
 
 exports.putProduct = async(req, res, next) => {
     const {id} = req.params
-    // product.id = shortid.generate()
-    // db.get("products").find({id}).assign(product).write()
+    const product = req.body
     
     try {
         
-        const product = await Product.findByIdAndUpdate(id, {
-            sortof: req.body.sortof,
-            name: req.body.name,
-            price: req.body.price,
-        } )
-        
-        res.json({success:true, product: product})
+        const updateProduct = await Product.findByIdAndUpdate(id, product, {new: true} )
+        if(!updateProduct) throw createError(500)
+        res.json({success:true, product: updateProduct})
     } catch(err) {
         next(err)
     }
@@ -68,6 +57,7 @@ exports.deleteProduct = async (req, res, next) => {
    const {id} = req.params
    try {
         const deletedProduct = await Product.findByIdAndDelete(id)
+        if(!deletedProduct) throw createError(404)
         res.json({success: true, product: deletedProduct})
    } catch(err) {
        next(err)
