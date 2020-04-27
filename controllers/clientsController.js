@@ -1,6 +1,5 @@
 const createError = require("http-errors")
 const Client = require("../models/clientsSchema")
-const faker = require("faker/locale/de")
 
 exports.getClients = async(req,res,next) => {
     try {

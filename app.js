@@ -2,19 +2,21 @@ const express = require("express")
 const app = express()
 const createError = require("http-errors")
 const mongoose = require("mongoose")
+const {cors} = require("./middleware/setCodes")
 
 const indexRoute = require("./routes/indexRoute")
 const productsRoute = require("./routes/productsRoute")
 const ordersRoute = require("./routes/ordersRoute")
 const clientsRoute = require("./routes/clientsRoute")
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 
 mongoose.connect("mongodb://127.0.0.1:27017/restaurant-database", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 mongoose.connection.on("error", (err) => console.log(err))
 mongoose.connection.on("open", () => console.log("database connected"))
 
 app.use(express.json())
+app.use(cors)
 
 app.use("/", indexRoute)
 app.use("/products", productsRoute)
