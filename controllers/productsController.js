@@ -1,10 +1,18 @@
 const createError = require("http-errors")
 const Product = require("../models/productsSchema")
+const jwt = require("jsonwebtoken")
 
 exports.getProducts = async(req,res,next) => {
     try {
-        const products = await Product.find()
-        res.json({success: true, products: products})
+        const value = req.header("test")
+        const check = jwt.verify(value, "peteco1983")
+        if(check) {
+            const products = await Product.find()
+            res.json({success: true, products: products})
+        } else {
+            throw createError(404)
+        }
+        
     }
     catch(err) {
         next(err)

@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Tammudu+2|Pacifico&display=swap');
+
+.products {
+    display: flex;
+}
+ 
+.container-products {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70vw;
+    justify-content: space-around;
+    
+    padding-top: 50px;
+}
+
+.container-products {
+    font-size: 1rem;
+    text-align: left;
+    font-family: 'Baloo Tammudu 2', cursive;
+    list-style: none;
+}

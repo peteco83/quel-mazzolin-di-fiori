@@ -16,26 +16,28 @@ const main = async () => {
         console.log(err)
     }
     
-    const clientPromises = Array(20).fill(null).map(() => {
-        const client = new Client({
-            firstName: faker.name.firstName(),
-            lastName: faker.name.lastName(),
-            email: faker.internet.email(),
-            password: faker.internet.password(),
-            phoneNumber: faker.phone.phoneNumber(),
-            address: faker.address.streetName(),
-            zipCode: faker.address.zipCode()
-        })
+    // const clientPromises = Array(20).fill(null).map(() => {
+    //     const client = new Client({
+    //         firstName: faker.name.firstName(),
+    //         lastName: faker.name.lastName(),
+    //         email: faker.internet.email(),
+    //         password: faker.internet.password(),
+    //         phoneNumber: faker.phone.phoneNumber(),
+    //         address: {
+    //             street: faker.address.streetName(),
+    //             zipCode: faker.address.zipCode()
+    //         }
+    //     })
 
-        return client.save()
-    })
+    //     return client.save()
+    // })
     
-    try {
-        await Promise.all(clientPromises)
-        console.log("users Added into the database")
-    } catch(err) {
-        console.log(err)
-    }
+    // try {
+    //     await Promise.all(clientPromises)
+    //     console.log("users Added into the database")
+    // } catch(err) {
+    //     console.log(err)
+    // }
 }
 
 main();

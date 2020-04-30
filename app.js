@@ -2,12 +2,14 @@ const express = require("express")
 const app = express()
 const createError = require("http-errors")
 const mongoose = require("mongoose")
-const {cors} = require("./middleware/setCodes")
+const logger = require("morgan")
+
 
 const indexRoute = require("./routes/indexRoute")
 const productsRoute = require("./routes/productsRoute")
 const ordersRoute = require("./routes/ordersRoute")
 const clientsRoute = require("./routes/clientsRoute")
+const {cors} = require("./middleware/security")
 
 const port = process.env.PORT || 4000
 
@@ -16,6 +18,7 @@ mongoose.connection.on("error", (err) => console.log(err))
 mongoose.connection.on("open", () => console.log("database connected"))
 
 app.use(express.json())
+app.use(logger("dev"))
 app.use(cors)
 
 app.use("/", indexRoute)
