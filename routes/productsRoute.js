@@ -1,10 +1,12 @@
 const Route = require("express").Router()
-const {getProducts, getProduct, postProduct, putProduct, deleteProduct} = require("../controllers/productsController")
+const { getProducts, getProduct, postProduct, putProduct, deleteProduct } = require("../controllers/productsController")
+const auth = require("../middleware/authenticator")
+const isAdmin = require("../middleware/rolesAuthenticator")
 
-Route.get("/", getProducts)
-Route.get("/:id", getProduct)
-Route.post("/", postProduct)
-Route.put("/:id", putProduct)
-Route.delete("/:id", deleteProduct)
+Route.get("/", auth, getProducts)
+Route.get("/:id", auth, getProduct)
+Route.post("/", auth, isAdmin, postProduct)
+Route.put("/:id", auth, isAdmin, putProduct)
+Route.delete("/:id", auth, isAdmin, deleteProduct)
 
 module.exports = Route

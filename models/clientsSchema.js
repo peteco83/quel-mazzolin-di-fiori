@@ -11,6 +11,7 @@ const clientSchema = new Schema({
     // si no pone required el usuario se lo puede saltar
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
+    role: { type: String, enum: ["Admin", "User"], required: false },
     tokens: [{ token: { type: String, required: true } }],
     password: { type: String, required: true },
     phoneNumber: { type: String, required: true },
@@ -22,11 +23,6 @@ const clientSchema = new Schema({
         toObject: {
             virtuals: true
         },
-        // toJSON: {
-        //     virtuals: true
-        // }
-
-        // we are not going to use the virtuals
     })
 
 clientSchema.plugin(uniqueValidator)
@@ -47,7 +43,7 @@ clientSchema.methods.getPublicFields = function () {
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
-        password: this.password
+        _id: this._id
     }
     return returnObject
 }
@@ -61,6 +57,20 @@ clientSchema.pre("save", async function (next) {
 clientSchema.methods.checkPassword = async function (password) {
     const client = this;
     return await compare(password, client.password)
+}
+
+clientSchema.statics.findByToken = function (token) {
+    const Client = this;
+    let decoded;
+
+    try {
+        decoded = jwt.verify(token, "peteco1983")
+    } catch (err) {
+        return;
+    }
+
+    return Client.findOne({ _id: decoded._id }).select("-password -__v")
+
 }
 
 

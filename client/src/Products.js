@@ -30,7 +30,7 @@ const Products = (props) => {
 
     return (
         <div className="products">
-            <Home />
+            {/* <Home /> */}
             <div>
                 <ul className="container-products">
                     {products.length > 0 ? products.map((product, i) => (

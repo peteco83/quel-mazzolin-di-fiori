@@ -29,8 +29,11 @@ exports.getClient = async (req, res, next) => {
 exports.postClient = async (req, res, next) => {
     try {
         const client = new Client(req.body)
+        const token = client.generateAuthToken()
         await client.save()
-        res.json({ success: true, client: client })
+        const publicData = client.getPublicFields()
+        res.header("x-auth", token)
+        res.json({ success: true, client: publicData })
     }
     catch (err) {
         next(err)
@@ -66,12 +69,13 @@ exports.login = async (req, res, next) => {
     const { email, password } = req.body
 
     try {
-        const client = await Client.findOne({ email, password })
-        if (!client) throw createError(404)
+        const client = await Client.findOne({ email })
+        const valid = await client.checkPassword(password)
+        if (!valid) throw createError(404)
         let token = client.generateAuthToken()
+        const publicData = client.getPublicFields()
 
-        res.header("test", token)
-        res.json({ success: true, message: `Hi ${client.firstName}` })
+        res.header("x-auth", token).json({ success: true, client: publicData })
     } catch (err) {
         next(err)
     }
