@@ -6,13 +6,16 @@ import './products.css'
 const Products = (props) => {
     const [products, setProducts] = useState([])
     const [input, setInput] = useState("")
-    console.log(props);
+    const [pizza, setPizza] = useState([])
+
+    console.log("props.token", props.token);
 
     const getData = () => {
+        console.log(props.token)
         fetch("http://localhost:4000/products", {
             headers: {
                 "content-type": "application/json",
-                "test": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZWFhYzAxOWU1ZGJlOTczNzUzNzM1ZWQiLCJpYXQiOjE1ODgyNTA3ODd9.SwzeBq3qbVT1ObV6-Ga-kFbYkajqE4cKdBa_I5lXDHs"
+                "x-auth": props.token
             }
         }
 
@@ -21,19 +24,21 @@ const Products = (props) => {
             .then(product => {
                 setProducts(product.products)
                 console.log(product);
+                let pizza = product.products.filter((prod) => prod.type === "pizza")
+                setPizza(pizza)
             })
     }
 
     useEffect(() => {
         getData()
-    }, [])
+    }, [props.token])
 
     return (
         <div className="products">
             {/* <Home /> */}
             <div>
                 <ul className="container-products">
-                    {products.length > 0 ? products.map((product, i) => (
+                    {products && products.length > 0 ? products.map((product, i) => (
                         <div key={i}>
                             <img src={product.img} alt={product.name} width="300" height="200" />
                             <li>{product.type}</li>

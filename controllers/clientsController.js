@@ -1,5 +1,6 @@
 const createError = require("http-errors")
 const Client = require("../models/clientsSchema")
+const { encrypt } = require("../lib/encryption")
 
 exports.getClients = async (req, res, next) => {
     try {
@@ -32,8 +33,9 @@ exports.postClient = async (req, res, next) => {
         const token = client.generateAuthToken()
         await client.save()
         const publicData = client.getPublicFields()
-        res.header("x-auth", token)
-        res.json({ success: true, client: publicData })
+        // res.header("x-auth", token)
+
+        res.json({ success: true, client: publicData, token: token })
     }
     catch (err) {
         next(err)
@@ -43,7 +45,13 @@ exports.postClient = async (req, res, next) => {
 exports.putClient = async (req, res, next) => {
     const { id } = req.params
     const client = req.body
+
     try {
+        if (Object.keys(req.body).includes("password")) {
+            const hashedPassword = await encrypt(client.password)
+            client.password = hashedPassword
+        }
+
         const updateClient = await Client.findByIdAndUpdate(id, client, { new: true })
         if (!updateClient) throw createError(500)
         res.json({ success: true, client: updateClient })
@@ -75,7 +83,7 @@ exports.login = async (req, res, next) => {
         let token = client.generateAuthToken()
         const publicData = client.getPublicFields()
 
-        res.header("x-auth", token).json({ success: true, client: publicData })
+        res.json({ success: true, client: publicData, token: token })
     } catch (err) {
         next(err)
     }

@@ -1,14 +1,16 @@
-import React from 'react';
-import Login from './Login'
-import SignUp from './SignUp'
+import React, { useState } from 'react';
 import './app.css'
 import Products from './Products';
 import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom"
 import Home from './Home';
 
 
-
 function App() {
+
+
+  const [token, setToken] = useState(null)
+
+
   return (
     <BrowserRouter>
       <div className="App">
@@ -33,18 +35,12 @@ function App() {
         </header>
 
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/products">
-            <Products />
-          </Route>
-          {/* <Route exact path ="/login">
-              <Login/>
-            </Route>
-            <Route exact path ="/signup">
-              <SignUp/>
-            </Route> */}
+          <Route exact path="/" render={(props) => <Home {...props} setToken={setToken} />} />
+
+
+          <Route exact path="/products" render={(props) => <Products {...props} token={token} />} />
+
+
         </Switch>
 
       </div>

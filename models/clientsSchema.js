@@ -4,6 +4,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require("jsonwebtoken")
 const { encrypt, compare } = require("../lib/encryption")
 const AddressSchema = require("./addressSchema")
+const env = require("../config/config")
 
 
 const clientSchema = new Schema({
@@ -33,7 +34,7 @@ clientSchema.virtual("fullName").get(function () {
 
 clientSchema.methods.generateAuthToken = function () {
     const client = this;
-    const token = jwt.sign({ _id: client._id }, "peteco1983").toString()
+    const token = jwt.sign({ _id: client._id }, env.jwt_key).toString()
     client.tokens.push({ token })
     return token
 }
@@ -64,7 +65,7 @@ clientSchema.statics.findByToken = function (token) {
     let decoded;
 
     try {
-        decoded = jwt.verify(token, "peteco1983")
+        decoded = jwt.verify(token, env.jwt_key)
     } catch (err) {
         return;
     }

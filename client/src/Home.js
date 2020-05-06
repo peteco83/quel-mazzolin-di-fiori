@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 import Products from "./Products"
 
 
-export default function Home() {
+export default function Home(props) {
 
     const [firstName, setFirstName] = useState(null)
     const [lastName, setLastName] = useState(null)
@@ -28,7 +28,7 @@ export default function Home() {
         const options = {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "content-type": "application/json"
             },
             body: JSON.stringify(clientData)
         };
@@ -37,20 +37,33 @@ export default function Home() {
         console.log(data)
         if (data.success) {
             setStatus(true)
+
+            props.setToken(data.token)
         }
         console.log(response.headers.get("x-auth"))
-
-        // localStorage.setItem("token", response.headers)
-
-
-
     }
 
+    // const handleLogin = async (e) => {
+    //     e.preventDefault()
+    //     const loginData = {
+    //         email: email,
+    //         password: password
+    //     }
+    //     const options = {
+    //         method: "POST",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(clientData)
+    //     }; 
+
+
+    // }
 
 
     return (
         <div className="main-container">
-            {status ? <Products /> : <div className="form-container">
+            {status ? <Redirect to="/products" /> : <div className="form-container">
                 <div className="signup-form">
                     <h1>Sign up for your order</h1>
                     <form onSubmit={handleSignUp} className="signup">
