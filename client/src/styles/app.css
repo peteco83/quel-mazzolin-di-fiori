@@ -40,7 +40,7 @@ header {
 }
 
 .App {
-    background-image: url("./images/pizza-3007395_1920.jpg");
+    background-image: url("../images/pizza-3007395_1920.jpg");
     width: auto;
     height: 100vh;
     background-position: center;

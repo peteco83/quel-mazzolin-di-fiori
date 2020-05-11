@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 const uniqueValidator = require('mongoose-unique-validator');
 const jwt = require("jsonwebtoken")
 const { encrypt, compare } = require("../lib/encryption")
-const AddressSchema = require("./addressSchema")
+// const AddressSchema = require("./addressSchema")
 const env = require("../config/config")
 
 
@@ -16,7 +16,10 @@ const clientSchema = new Schema({
     tokens: [{ token: { type: String, required: true } }],
     password: { type: String, required: true },
     phoneNumber: { type: String, required: true },
-    address: AddressSchema,
+    street: { type: String, require: true },
+    city: { type: String, default: "Berlin" },
+    zipCode: { type: Number, require: true },
+    order: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }]
 
 },
 

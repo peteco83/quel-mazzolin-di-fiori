@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Redirect } from "react-router-dom"
-import Products from "./Products"
+import { ContextTotal } from './Context'
 
 
 export default function Home(props) {
+
+    const { setToken, client, setClient, } = useContext(ContextTotal)
 
     const [firstName, setFirstName] = useState(null)
     const [lastName, setLastName] = useState(null)
     const [email, setEmail] = useState(null)
     const [password, setPassword] = useState(null)
-    const [address, setAddress] = useState(null)
+    const [street, setStreet] = useState(null)
     const [zipCode, setZipCode] = useState(null)
     const [phone, setPhone] = useState(null)
     const [status, setStatus] = useState(false)
@@ -22,7 +24,7 @@ export default function Home(props) {
             email: email,
             password: password,
             phoneNumber: phone,
-            address: address,
+            street: street,
             zipCode: zipCode
         };
         const options = {
@@ -37,28 +39,35 @@ export default function Home(props) {
         console.log(data)
         if (data.success) {
             setStatus(true)
-
-            props.setToken(data.token)
+            setToken(data.token)
+            setClient(data.client)
         }
         console.log(response.headers.get("x-auth"))
     }
 
-    // const handleLogin = async (e) => {
-    //     e.preventDefault()
-    //     const loginData = {
-    //         email: email,
-    //         password: password
-    //     }
-    //     const options = {
-    //         method: "POST",
-    //         headers: {
-    //             "content-type": "application/json"
-    //         },
-    //         body: JSON.stringify(clientData)
-    //     }; 
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        const loginData = {
+            email: email,
+            password: password,
+        }
+        const options = {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(loginData)
+        };
+        const response = await fetch("http://localhost:4000/clients/login", options);
+        const data = await response.json()
+        console.log(data)
+        if (data.success) {
+            setStatus(true)
+            setToken(data.token)
+        }
 
 
-    // }
+    }
 
 
     return (
@@ -82,8 +91,8 @@ export default function Home(props) {
 
                         <label>Password:<input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} required /></label>
                         <label>Phone:<input type="text" id="phone" name="phone" onChange={(e) => setPhone(e.target.value)} required /></label>
-                        <label>Address:
-                            <input type="text" id="address" name="address" />
+                        <label>Street and Number:
+                            <input type="text" id="street" name="street" onChange={(e) => setStreet(e.target.value)} required />
                         </label>
 
 
@@ -93,14 +102,14 @@ export default function Home(props) {
                 </div>
                 <div className="login-form">
                     <h1>Log in if you have an account</h1>
-                    <form className="login">
+                    <form onSubmit={handleLogin} className="login">
 
                         <label>E-Mail:
-                            <input type="email" name="email" />
+                            <input type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} required />
                         </label>
 
 
-                        <label>Password:<input type="password" name="password" required /></label>
+                        <label>Password:<input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} required /></label>
                         <button type="submit">Log In</button>
                     </form>
                 </div>

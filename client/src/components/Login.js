@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Home from './Home'
-import './login.css'
+import '../styles/login.css'
 
 const Login = () => {
 
