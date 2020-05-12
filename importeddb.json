@@ -1,0 +1,199 @@
+[{
+  "_id": {
+    "$oid": "5ea6e993211b4e6a05f829fe"
+  },
+  "type": "Pasta",
+  "name": "Spaghetti Carbonara",
+  "img": "https://img.chefkoch-cdn.de/rezepte/1491131254215808/bilder/1021900/crop-960x640/spaghetti-carbonara.jpg",
+  "price": 7,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ea6e9cb211b4e6a05f829ff"
+  },
+  "type": "Pasta",
+  "name": "Spaghetti di Mare",
+  "img": "https://img.chefkoch-cdn.de/rezepte/842311189503636/bilder/1148638/crop-600x400/spaghetti-frutti-di-mare.jpg",
+  "price": 9,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ea6e9fc211b4e6a05f82a00"
+  },
+  "type": "Pasta",
+  "name": "Spaghetti Bolognese",
+  "img": "https://img.chefkoch-cdn.de/rezepte/119041050585119/bilder/1112902/crop-600x400/spaghetti-bolognese-gran-gusto.jpg",
+  "price": 9,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ea84be919bcbc4747adb362"
+  },
+  "type": "Pizza",
+  "name": "Margherita",
+  "img": "https://img.chefkoch-cdn.de/rezepte/1002961205505361/bilder/1051045/crop-600x400/pizza-margherita-nach-italienischer-art.jpg",
+  "price": 7,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ea84cf919bcbc4747adb363"
+  },
+  "type": "Pizza",
+  "name": "Salami",
+  "img": "https://img.chefkoch-cdn.de/rezepte/1862581301652217/bilder/1041552/crop-600x400/pizza-salami.jpg",
+  "price": 9,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ea84d3919bcbc4747adb364"
+  },
+  "type": "Pizza",
+  "name": "Champignon",
+  "img": "https://img.chefkoch-cdn.de/rezepte/2235331358009600/bilder/903150/crop-600x400/pizza-knoblauch-champignon-paprika-vegan.jpg",
+  "price": 9,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ea84d7519bcbc4747adb365"
+  },
+  "type": "Hot Beverage",
+  "name": "Espresso",
+  "img": "https://cdn.pixabay.com/photo/2020/04/13/10/48/coffee-5037804_960_720.jpg",
+  "price": 1.5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ea84d7619bcbc4747adb366"
+  },
+  "type": "Hot Beverage",
+  "name": "Espresso",
+  "img": "https://cdn.pixabay.com/photo/2020/04/13/10/48/coffee-5037804_960_720.jpg",
+  "price": 1.5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5ea84ddd19bcbc4747adb367"
+  },
+  "type": "Hot Beverage",
+  "name": "Cappuccino",
+  "img": "https://cdn.pixabay.com/photo/2015/05/07/13/46/cappuccino-756490_960_720.jpg",
+  "price": 2.8,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb40202c8314a3b0ec97a3b"
+  },
+  "type": "Pasta",
+  "name": "Spaghetti Napoli",
+  "img": "https://img.chefkoch-cdn.de/rezepte/493951143751463/bilder/463408/crop-600x400/spaghetti-napoli.jpg",
+  "price": 6.5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb40232c8314a3b0ec97a3c"
+  },
+  "type": "Pasta",
+  "name": "Spaghetti mediterran",
+  "img": "https://img.chefkoch-cdn.de/rezepte/2610661410088958/bilder/906114/crop-600x400/spaghetti-mediterran-oder-pizza-spaghetti.jpg",
+  "price": 7.5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb40283c8314a3b0ec97a3d"
+  },
+  "type": "Pasta",
+  "name": "Penne al Gamberetti",
+  "img": "https://img.chefkoch-cdn.de/rezepte/3646211548856114/bilder/1200094/crop-600x400/penne-al-gamberetti-penne-mit-riesengarnelen.jpg",
+  "price": 7.5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb402acc8314a3b0ec97a3e"
+  },
+  "type": "Pasta",
+  "name": "Zucchini-Lasagne",
+  "img": "https://img.chefkoch-cdn.de/rezepte/1616691268862802/bilder/730503/crop-600x400/zucchini-lasagne.jpg",
+  "price": 10,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb402e1c8314a3b0ec97a3f"
+  },
+  "type": "Pizza",
+  "name": "Sucuklu Pizza",
+  "img": "https://img.chefkoch-cdn.de/rezepte/3191801475050621/bilder/984391/crop-600x400/pizza-mit-knoblauchwurst-sucuklu-pizza.jpg",
+  "price": 8,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb4032bc8314a3b0ec97a40"
+  },
+  "type": "Pizza",
+  "name": "Pizza Diavolo",
+  "img": "https://img.chefkoch-cdn.de/rezepte/624901162810969/bilder/1175619/crop-600x400/pizza-diavolo.jpg",
+  "price": 10,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb40aefc8314a3b0ec97a41"
+  },
+  "type": "Focaccia",
+  "name": "Focaccia with Tomatoes und Rosemary",
+  "img": "https://img.chefkoch-cdn.de/rezepte/2001471324023188/bilder/764582/crop-600x400/focaccia-mit-tomaten-und-rosmarin.jpg",
+  "price": 6,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb40b5dc8314a3b0ec97a42"
+  },
+  "type": "Focaccia",
+  "name": "Mozzarella - Focaccia",
+  "img": "https://img.chefkoch-cdn.de/rezepte/1848021299398694/bilder/342602/crop-600x400/mozzarella-focaccia.jpg",
+  "price": 5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb40b9fc8314a3b0ec97a43"
+  },
+  "type": "Antipasti",
+  "name": "Mozzarella Caprese",
+  "img": "https://www.gutekueche.at/img/rezept/2525/mozzarella-auf-tomaten-caprese.jpg",
+  "price": 5.5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb40c0ac8314a3b0ec97a45"
+  },
+  "type": "Antipasti",
+  "name": "Carciofi gratinati",
+  "img": "https://images.fidhouse.com/fidelitynews/wp-content/uploads/sites/6/2014/11/carciofi-gratinati.jpg?w=580",
+  "price": 6.5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb40c30c8314a3b0ec97a46"
+  },
+  "type": "Antipasti",
+  "name": "Broccoli al Forno",
+  "img": "https://www.gutekueche.at/img/rezept/25581/broccoli-al-forno.jpg",
+  "price": 6.5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb40ca4c8314a3b0ec97a47"
+  },
+  "type": "Desserts",
+  "name": "Tiramisu",
+  "img": "https://img.chefkoch-cdn.de/rezepte/264171102553424/bilder/582416/crop-600x400/tiramisu.jpg",
+  "price": 6.5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5eb40ccbc8314a3b0ec97a48"
+  },
+  "type": "Desserts",
+  "name": "Tartufo",
+  "img": "https://www.uniteis.com/dw18/wp-content/uploads/2018/09/tartufo.jpg",
+  "price": 5.5,
+  "__v": 0
+}]

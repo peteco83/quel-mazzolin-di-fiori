@@ -34,7 +34,9 @@ exports.postClient = async (req, res, next) => {
         await client.save()
         const publicData = client.getPublicFields()
         // res.header("x-auth", token)
-
+        req.session.token = token;
+        req.session.client = client
+        res.cookie("login", true)
         res.json({ success: true, client: publicData, token: token })
     }
     catch (err) {
@@ -82,9 +84,22 @@ exports.login = async (req, res, next) => {
         if (!valid) throw createError(404)
         let token = client.generateAuthToken()
         const publicData = client.getPublicFields()
-
+        req.session.token = token;
+        req.session.client = publicData
+        res.cookie("login", true)
         res.json({ success: true, client: publicData, token: token })
     } catch (err) {
         next(err)
     }
+}
+
+exports.logout = async (req, res, next) => {
+    try {
+        req.session.destroy()
+        res.json({ success: true })
+
+    } catch (err) {
+        next(err)
+    }
+
 }

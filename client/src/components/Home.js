@@ -5,7 +5,8 @@ import { ContextTotal } from './Context'
 
 export default function Home(props) {
 
-    const { setToken, client, setClient, } = useContext(ContextTotal)
+    const { setToken, client, setClient, isLogged, setIsLogged, token, cookies } = useContext(ContextTotal)
+    console.log(cookies)
 
     const [firstName, setFirstName] = useState(null)
     const [lastName, setLastName] = useState(null)
@@ -34,15 +35,16 @@ export default function Home(props) {
             },
             body: JSON.stringify(clientData)
         };
-        const response = await fetch("http://localhost:4000/clients", options);
+        const response = await fetch("/clients", options);
         const data = await response.json()
         console.log(data)
         if (data.success) {
             setStatus(true)
             setToken(data.token)
             setClient(data.client)
+            setIsLogged(true)
         }
-        console.log(response.headers.get("x-auth"))
+        console.log(client)
     }
 
     const handleLogin = async (e) => {
@@ -58,12 +60,15 @@ export default function Home(props) {
             },
             body: JSON.stringify(loginData)
         };
-        const response = await fetch("http://localhost:4000/clients/login", options);
+        const response = await fetch("/clients/login", options);
         const data = await response.json()
         console.log(data)
         if (data.success) {
             setStatus(true)
             setToken(data.token)
+            setIsLogged(true)
+            setClient(data.client)
+            localStorage.setItem("login", true)
         }
 
 
@@ -72,7 +77,7 @@ export default function Home(props) {
 
     return (
         <div className="main-container">
-            {status ? <Redirect to="/products" /> : <div className="form-container">
+            {cookies ? <Redirect to="/products" /> : <div className="form-container">
                 <div className="signup-form">
                     <h1>Sign up for your order</h1>
                     <form onSubmit={handleSignUp} className="signup">
@@ -105,11 +110,11 @@ export default function Home(props) {
                     <form onSubmit={handleLogin} className="login">
 
                         <label>E-Mail:
-                            <input type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} required />
+                            <input type="email" id="email-login" name="email" onChange={(e) => setEmail(e.target.value)} required />
                         </label>
 
 
-                        <label>Password:<input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} required /></label>
+                        <label>Password:<input type="password" id="password-login" name="password" onChange={(e) => setPassword(e.target.value)} required /></label>
                         <button type="submit">Log In</button>
                     </form>
                 </div>

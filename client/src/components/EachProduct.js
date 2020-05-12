@@ -3,7 +3,7 @@ import { ContextTotal } from './Context'
 
 
 export default function EachProduct(props) {
-    const { products, filteredProduct, setFilteredProduct, cart, setCart, token } = useContext(ContextTotal)
+    const { products, filteredProduct, setFilteredProduct, cart, setCart } = useContext(ContextTotal)
     console.log(props)
     const [quantity, setQuantity] = useState(1)
 
@@ -20,24 +20,6 @@ export default function EachProduct(props) {
         productFilter()
     }, [])
 
-    // const addToCart = async () => {
-    //     const orderData = {
-    //         quantity: quantity,
-    //     }
-    //     const options = {
-    //         method: "POST",
-    //         headers: {
-    //             "content-type": "application/json",
-    //             "x-auth": token
-
-    //         },
-    //         body: JSON.stringify(orderData)
-    //     };
-    //     const response = await fetch("http://localhost:4000/orders", options);
-    //     const data = await response.json()
-
-    //     console.log(data)
-    // }
 
     const addToCart = (product) => {
         const orderData = {
@@ -51,14 +33,6 @@ export default function EachProduct(props) {
 
     return (
         <div>
-            {/* {pasta && pasta.length > 0 && pasta.map(pasta => {
-                return (
-                    <div>
-                        {pasta.name}
-                        {pasta.img}
-                    </div>
-                )
-            })} */}
             <ul className="container-products">
                 {filteredProduct && filteredProduct.length > 0 ? filteredProduct.map((product, i) => (
                     <div key={i}>

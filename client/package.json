@@ -2,6 +2,7 @@
   " name": "quel-mazzolin-di-fiori",
   "version": "1.0.0",
   "description": "des",
+  "homepage": ".",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

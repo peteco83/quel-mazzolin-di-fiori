@@ -14,7 +14,7 @@ const Products = () => {
 
     const getData = () => {
         console.log(token)
-        fetch("http://localhost:4000/products", {
+        fetch("/products", {
             headers: {
                 "content-type": "application/json",
                 "x-auth": token
@@ -26,7 +26,7 @@ const Products = () => {
             .then(product => {
 
                 setProducts(product.products)
-                console.log(product.products)
+                console.log(product)
 
             })
     }
@@ -62,7 +62,7 @@ const Products = () => {
                     </div>
                 </div>
             </Link>
-            <Link to="/products/Focacce">
+            <Link to="/products/Focaccia">
                 <div className="card">
                     <div className="imgCard">
                         <img src={focaccia} alt="focaccia" width="300" height="200"></img>

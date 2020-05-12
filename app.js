@@ -4,7 +4,8 @@ const createError = require("http-errors")
 const mongoose = require("mongoose")
 const logger = require("morgan")
 const env = require("./config/config")
-
+const session = require("express-session")
+const MongoStore = require("connect-mongo")(session)
 
 const indexRoute = require("./routes/indexRoute")
 const productsRoute = require("./routes/productsRoute")
@@ -21,6 +22,14 @@ mongoose.connection.on("open", () => console.log("database connected"))
 app.use(express.json())
 app.use(logger("dev"))
 app.use(cors)
+app.use(session({
+    secret: 'peteco1983',
+    resave: false,
+    saveUninitialized: true,
+    // unset: "destroy"
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    cookie: { secure: false, httpOnly: false }
+}))
 app.use(express.static("client/build"))
 
 app.use("/", indexRoute)
