@@ -22,6 +22,7 @@ function App() {
   const [client, setClient] = useState(null)
   const [cookies, setCookies] = useState(false)
   const [status, setStatus] = useState(false)
+  const [order, setOrder] = useState([])
 
 
   useEffect(() => {
@@ -34,7 +35,7 @@ function App() {
   return (
 
 
-    <ContextTotal.Provider value={{ status, setStatus, setCookies, cookies, isLogged, setIsLogged, client, setClient, token, setToken, products, setProducts, cart, setCart, filteredProduct, setFilteredProduct, total, setTotal }}>
+    <ContextTotal.Provider value={{ order, setOrder, status, setStatus, setCookies, cookies, isLogged, setIsLogged, client, setClient, token, setToken, products, setProducts, cart, setCart, filteredProduct, setFilteredProduct, total, setTotal }}>
       <BrowserRouter>
         <div className="App">
           <header>

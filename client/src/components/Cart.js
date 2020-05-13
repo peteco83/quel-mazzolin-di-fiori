@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 export default function Cart() {
 
-    const { cart, setCart, user, status, setStatus, client } = useContext(ContextTotal)
+    const { cart, setCart, user, status, setStatus, client, order, setOrder } = useContext(ContextTotal)
     console.log(cart);
 
 
@@ -13,12 +13,6 @@ export default function Cart() {
         // let newCart = cart.filter(item => item.product._id !== id)
         let newCart = [...cart]
         newCart.splice(id, 1)
-        setCart(newCart)
-    }
-
-    const deleteAll = () => {
-        let newCart = [...cart]
-        newCart.splice(0, -1)
         setCart(newCart)
     }
 
@@ -50,7 +44,9 @@ export default function Cart() {
         console.log(data)
         if (data.success) {
             setStatus(true)
-            data.splice(0, data.length)
+            setOrder(data)
+            setCart([])
+
         }
     }
 

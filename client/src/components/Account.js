@@ -5,8 +5,9 @@ import '../styles/account.css'
 
 export default function Account() {
 
-    const { setCookies, cookies, client } = useContext(ContextTotal)
+    const { setCookies, cookies, client, order } = useContext(ContextTotal)
     console.log(client);
+    console.log(order)
 
     // const getOrders = () => {
     //     console.
