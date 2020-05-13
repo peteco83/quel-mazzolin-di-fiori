@@ -7,6 +7,7 @@ import { ContextTotal } from "./Context"
 import Cart from './Cart'
 import Account from './Account'
 import EachProduct from './EachProduct'
+import CheckOut from './CheckOut'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   const [total, setTotal] = useState(0)
   const [client, setClient] = useState(null)
   const [cookies, setCookies] = useState(false)
+  const [status, setStatus] = useState(false)
 
 
   useEffect(() => {
@@ -32,7 +34,7 @@ function App() {
   return (
 
 
-    <ContextTotal.Provider value={{ setCookies, cookies, isLogged, setIsLogged, client, setClient, token, setToken, products, setProducts, cart, setCart, filteredProduct, setFilteredProduct, total, setTotal }}>
+    <ContextTotal.Provider value={{ status, setStatus, setCookies, cookies, isLogged, setIsLogged, client, setClient, token, setToken, products, setProducts, cart, setCart, filteredProduct, setFilteredProduct, total, setTotal }}>
       <BrowserRouter>
         <div className="App">
           <header>
@@ -66,6 +68,7 @@ function App() {
             <Route exact path="/cart" component={Cart} />
 
             <Route exact path="/account" component={Account} />
+            <Route exact path="/checkout" component={CheckOut} />
 
 
           </Switch>

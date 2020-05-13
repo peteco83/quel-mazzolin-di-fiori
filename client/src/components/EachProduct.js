@@ -3,7 +3,7 @@ import { ContextTotal } from './Context'
 
 
 export default function EachProduct(props) {
-    const { products, filteredProduct, setFilteredProduct, cart, setCart } = useContext(ContextTotal)
+    const { products, filteredProduct, setFilteredProduct, cart, setCart, client } = useContext(ContextTotal)
     console.log(props)
     const [quantity, setQuantity] = useState(1)
 
@@ -23,9 +23,10 @@ export default function EachProduct(props) {
 
     const addToCart = (product) => {
         const orderData = {
-            quantity: quantity,
+            // quantity: quantity,
             id: product._id,
             product: product
+
         }
         setCart([...cart, orderData]);
         alert("Added")
@@ -40,7 +41,7 @@ export default function EachProduct(props) {
                         <li>{product.type}</li>
                         <li>{product.name}</li>
                         <li>{product.price}€</li>
-                        <li>Quantity: <input type="number" id="quantity" name="quantity" onChange={(e) => setQuantity(e.target.value)} required></input></li>
+                        {/* <li>Quantity: <input type="number" id="quantity" name="quantity" onChange={(e) => setQuantity(e.target.value)} required></input></li> */}
                         <button onClick={() => {
                             addToCart(product)
                         }

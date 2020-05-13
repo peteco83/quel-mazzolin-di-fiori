@@ -43,7 +43,7 @@ export default function Home(props) {
             setToken(data.token)
             setClient(data.client)
             // setIsLogged(true)
-            localStorage.setItem("login", true)
+            // localStorage.setItem("login", true)
             setCookies(true)
         }
         console.log(client)
@@ -69,7 +69,7 @@ export default function Home(props) {
             // setStatus(true)
             setToken(data.token)
             setClient(data.client)
-            localStorage.setItem("login", true)
+            // localStorage.setItem("login", true)
             setCookies(true)
 
         }
@@ -80,7 +80,7 @@ export default function Home(props) {
 
     return (
         <div className="main-container">
-            {cookies ? <Redirect to="/products" /> : <div className="form-container">
+            {cookies ? <Redirect to="/account" /> : <div className="form-container">
                 <div className="signup-form">
                     <h1>Sign up for your order</h1>
                     <form onSubmit={handleSignUp} className="signup">

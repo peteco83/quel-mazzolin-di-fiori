@@ -1,5 +1,6 @@
 const createError = require("http-errors")
 const Order = require("../models/ordersSchema")
+const Client = require("../models/clientsSchema")
 
 exports.getOrders = async (req, res, next) => {
     try {
@@ -26,11 +27,17 @@ exports.getOrder = async (req, res, next) => {
 }
 
 exports.postOrder = async (req, res, next) => {
+    const { order, client } = req.body
+
     try {
 
-        const order = new Order(req.body)
-        await order.save()
-        res.json({ success: true, order: order })
+        const newOrder = new Order()
+        newOrder.product = order
+        await newOrder.save()
+        let clientData = await Client.findById(client)
+        clientData.order.push(newOrder._id)
+        await clientData.save()
+        res.json({ success: true, order: newOrder, client: clientData })
     }
     catch (err) {
         next(err)

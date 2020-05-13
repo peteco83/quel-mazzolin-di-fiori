@@ -47,12 +47,16 @@ clientSchema.methods.getPublicFields = function () {
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
+        street: this.street,
+        zipCode: this.zipCode,
+        order: this.order,
         _id: this._id
     }
     return returnObject
 }
 
 clientSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) return next();
     this.password = await encrypt(this.password)
     next()
     // before storing the user instance (that means before running the save() function in the addUser() one), this this function is going to run and it will convert the password into a hash
