@@ -1,0 +1,11 @@
+.account {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    height: 100vh;
+    justify-content: space-around;
+    padding-top: 50px;
+    background-color: white;
+    
+    
+}

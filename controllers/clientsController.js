@@ -94,12 +94,13 @@ exports.login = async (req, res, next) => {
 }
 
 exports.logout = async (req, res, next) => {
+
     try {
         req.session.destroy()
         res.json({ success: true })
-
     } catch (err) {
         next(err)
     }
+
 
 }

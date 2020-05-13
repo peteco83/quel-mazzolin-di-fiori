@@ -5,8 +5,8 @@ import { ContextTotal } from './Context'
 
 export default function Home(props) {
 
-    const { setToken, client, setClient, isLogged, setIsLogged, token, cookies } = useContext(ContextTotal)
-    console.log(cookies)
+    const { setToken, client, setClient, isLogged, setIsLogged, token, cookies, setCookies } = useContext(ContextTotal)
+    console.log("cookies:" + cookies)
 
     const [firstName, setFirstName] = useState(null)
     const [lastName, setLastName] = useState(null)
@@ -39,10 +39,12 @@ export default function Home(props) {
         const data = await response.json()
         console.log(data)
         if (data.success) {
-            setStatus(true)
+            // setStatus(true)
             setToken(data.token)
             setClient(data.client)
-            setIsLogged(true)
+            // setIsLogged(true)
+            localStorage.setItem("login", true)
+            setCookies(true)
         }
         console.log(client)
     }
@@ -64,11 +66,12 @@ export default function Home(props) {
         const data = await response.json()
         console.log(data)
         if (data.success) {
-            setStatus(true)
+            // setStatus(true)
             setToken(data.token)
-            setIsLogged(true)
             setClient(data.client)
             localStorage.setItem("login", true)
+            setCookies(true)
+
         }
 
 
