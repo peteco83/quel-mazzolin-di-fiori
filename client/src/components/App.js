@@ -8,6 +8,7 @@ import Cart from './Cart'
 import Account from './Account'
 import EachProduct from './EachProduct'
 import CheckOut from './CheckOut'
+import Admin from './Admin'
 
 
 function App() {
@@ -70,7 +71,7 @@ function App() {
 
             <Route exact path="/account" component={Account} />
             <Route exact path="/checkout" component={CheckOut} />
-
+            <Route exact path="/admin" component={Admin} />
 
           </Switch>
 

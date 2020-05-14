@@ -47,6 +47,7 @@ clientSchema.methods.getPublicFields = function () {
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
+        role: this.role,
         street: this.street,
         zipCode: this.zipCode,
         order: this.order,

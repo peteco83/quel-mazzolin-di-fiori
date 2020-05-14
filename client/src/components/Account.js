@@ -40,6 +40,7 @@ export default function Account() {
                 </div>
 
                 : <Redirect to="/" />}
+
             {/* <button onClick={logout}>logout</button> */}
         </div>
     )

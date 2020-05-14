@@ -80,7 +80,8 @@ export default function Home(props) {
 
     return (
         <div className="main-container">
-            {cookies ? <Redirect to="/account" /> : <div className="form-container">
+            {cookies && client.role === "Admin" ? <Redirect to="/admin" /> : null}
+            {cookies && client.role === null ? <Redirect to="/account" /> : <div className="form-container">
                 <div className="signup-form">
                     <h1>Sign up for your order</h1>
                     <form onSubmit={handleSignUp} className="signup">
