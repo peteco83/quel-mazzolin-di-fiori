@@ -17,15 +17,20 @@ export default function Home(props) {
     const [phone, setPhone] = useState(null)
     const [status, setStatus] = useState(false)
 
-    // useEffect(() => {
-    //     let id = localStorage.getItem("id")
-    //     if (id) {
-    //         fetch(`/clients/${id}`)
-    //             .then(res => res.json())
-    //             .then(client =>
-    //                 setClient(client))
-    //     }
-    // }, [])
+    useEffect(() => {
+        let id = localStorage.getItem("id")
+        if (id) {
+            fetch(`/clients/${id}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    setClient(data.client)
+                }
+                )
+        }
+    }, [])
+
+    console.log(client, "from Homepage")
 
 
     const handleSignUp = async (e) => {

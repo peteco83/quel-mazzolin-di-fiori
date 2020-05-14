@@ -30,24 +30,23 @@ function App() {
   useEffect(() => {
     let data = localStorage.getItem("login")
 
-    let id = localStorage.getItem("id")
-    if (id) {
-      fetch(`/clients/${id}`)
-        .then(res => res.json())
-        .then(client =>
-          setClient(client))
-    }
-
     if (data) {
       setCookies(true)
     }
 
   }, [])
 
+  const logout = () => {
+    fetch("/clients/logout")
+    localStorage.clear()
+    setCookies(false)
+
+  }
+
   return (
 
 
-    <ContextTotal.Provider value={{ order, setOrder, status, setStatus, setCookies, cookies, isLogged, setIsLogged, client, setClient, token, setToken, products, setProducts, cart, setCart, filteredProduct, setFilteredProduct, total, setTotal }}>
+    <ContextTotal.Provider value={{ logout, order, setOrder, status, setStatus, setCookies, cookies, isLogged, setIsLogged, client, setClient, token, setToken, products, setProducts, cart, setCart, filteredProduct, setFilteredProduct, total, setTotal }}>
       <BrowserRouter>
         <div className="App">
           <header>

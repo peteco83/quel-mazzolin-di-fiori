@@ -1,12 +1,13 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ContextTotal } from "./Context"
 import { Redirect } from "react-router-dom"
 import '../styles/account.css'
 
 export default function Account() {
 
-    const { setCookies, cookies, client, order, setClient } = useContext(ContextTotal)
-    console.log(client);
+    const { setCookies, cookies, client, order, setClient, logout } = useContext(ContextTotal)
+    const [ownOrder, setOwnOrder] = useState([])
+    console.log(client, "from account");
     console.log(order)
 
     // useEffect(() => {
@@ -20,11 +21,15 @@ export default function Account() {
     // }, [])
 
 
-    const logout = () => {
-        fetch("/clients/logout")
-        localStorage.clear("login")
-        setCookies(false)
+    // const logout = () => {
+    //     fetch("/clients/logout")
+    //     localStorage.clear("login")
+    //     setCookies(false)
 
+    // }
+
+    const getorders = () => {
+        fetch
     }
 
     return (
@@ -42,7 +47,7 @@ export default function Account() {
                     <h3>Zipcode: {client.zipCode}</h3>
                     <h3>Your Orders: </h3>
 
-                    <button onClick={logout}>logout</button>
+                    <button onClick={() => logout()}>logout</button>
                 </div>
 
                 : <Redirect to="/" />}

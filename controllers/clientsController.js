@@ -16,7 +16,7 @@ exports.getClients = async (req, res, next) => {
 exports.getClient = async (req, res, next) => {
     const { id } = req.params
     try {
-        const client = await Client.findById(id)
+        const client = await Client.findById(id).populate("order").populate("product")
         if (!client) throw createError(404)
         res.header("test", "123")
         res.json({ success: true, client: client })
