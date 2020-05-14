@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Redirect } from "react-router-dom"
 import { ContextTotal } from './Context'
 
@@ -16,6 +16,17 @@ export default function Home(props) {
     const [zipCode, setZipCode] = useState(null)
     const [phone, setPhone] = useState(null)
     const [status, setStatus] = useState(false)
+
+    // useEffect(() => {
+    //     let id = localStorage.getItem("id")
+    //     if (id) {
+    //         fetch(`/clients/${id}`)
+    //             .then(res => res.json())
+    //             .then(client =>
+    //                 setClient(client))
+    //     }
+    // }, [])
+
 
     const handleSignUp = async (e) => {
         e.preventDefault()
@@ -43,7 +54,8 @@ export default function Home(props) {
             setToken(data.token)
             setClient(data.client)
             // setIsLogged(true)
-            // localStorage.setItem("login", true)
+            localStorage.setItem("login", true)
+            localStorage.setItem("id", data.client._id)
             setCookies(true)
         }
         console.log(client)
@@ -69,9 +81,12 @@ export default function Home(props) {
             // setStatus(true)
             setToken(data.token)
             setClient(data.client)
-            // localStorage.setItem("login", true)
+            localStorage.setItem("login", true)
+            localStorage.setItem("id", data.client._id)
             setCookies(true)
 
+        } else {
+            alert("Your email or password are wrong or doesn't exist in our database")
         }
 
 
@@ -80,8 +95,8 @@ export default function Home(props) {
 
     return (
         <div className="main-container">
-            {cookies && client.role === "Admin" ? <Redirect to="/admin" /> : null}
-            {cookies && client.role === null ? <Redirect to="/account" /> : <div className="form-container">
+            {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
+            {cookies && client && client.role === "User" ? <Redirect to="/account" /> : <div className="form-container">
                 <div className="signup-form">
                     <h1>Sign up for your order</h1>
                     <form onSubmit={handleSignUp} className="signup">

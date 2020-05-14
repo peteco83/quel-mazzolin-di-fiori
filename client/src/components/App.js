@@ -26,11 +26,22 @@ function App() {
   const [order, setOrder] = useState([])
 
 
+
   useEffect(() => {
     let data = localStorage.getItem("login")
+
+    let id = localStorage.getItem("id")
+    if (id) {
+      fetch(`/clients/${id}`)
+        .then(res => res.json())
+        .then(client =>
+          setClient(client))
+    }
+
     if (data) {
       setCookies(true)
     }
+
   }, [])
 
   return (

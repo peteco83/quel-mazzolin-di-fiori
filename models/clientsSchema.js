@@ -12,7 +12,8 @@ const clientSchema = new Schema({
     // si no pone required el usuario se lo puede saltar
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    role: { type: String, enum: ["Admin", "User"], required: false },
+    // role: { type: String, enum: ["Admin", "User"], required: true },
+    role: { type: String, default: "User", required: true },
     tokens: [{ token: { type: String, required: true } }],
     password: { type: String, required: true },
     phoneNumber: { type: String, required: true },

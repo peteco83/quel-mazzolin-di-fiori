@@ -1,30 +1,36 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ContextTotal } from "./Context"
 import { Redirect } from "react-router-dom"
 import '../styles/account.css'
 
 export default function Account() {
 
-    const { setCookies, cookies, client, order } = useContext(ContextTotal)
+    const { setCookies, cookies, client, order, setClient } = useContext(ContextTotal)
     console.log(client);
     console.log(order)
 
-    // const getOrders = () => {
-    //     console.
-    // }
+    // useEffect(() => {
+    //     let id = localStorage.getItem("id")
+    //     if (id) {
+    //         fetch(`/clients/${id}`)
+    //             .then(res => res.json())
+    //             .then(client =>
+    //                 setClient(client))
+    //     }
+    // }, [])
+
 
     const logout = () => {
         fetch("/clients/logout")
         localStorage.clear("login")
         setCookies(false)
 
-
     }
 
     return (
         <div>
-
-            {cookies ?
+            {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
+            {cookies && client && client.role === "User" ?
 
                 <div className="account">
                     <h1>Hi {client.firstName}</h1>
