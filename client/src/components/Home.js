@@ -15,7 +15,12 @@ export default function Home(props) {
     const [street, setStreet] = useState(null)
     const [zipCode, setZipCode] = useState(null)
     const [phone, setPhone] = useState(null)
-    const [status, setStatus] = useState(false)
+    const [error, setError] = useState("")
+    const [statusLogin, setStatusLogin] = useState(true)
+    const [statusSignup, setStatusSignup] = useState(true)
+    const [messageEmail, setMessageEmail] = useState("")
+    const [messagePassword, setMessagePassword] = useState("")
+    const [messageAlreadyEmail, setMessageAlreadyEmail] = useState("")
 
     useEffect(() => {
         let id = localStorage.getItem("id")
@@ -53,7 +58,7 @@ export default function Home(props) {
         };
         const response = await fetch("/clients", options);
         const data = await response.json()
-        console.log(data)
+        console.log(data, "This is data signup")
         if (data.success) {
             // setStatus(true)
             setToken(data.token)
@@ -62,9 +67,41 @@ export default function Home(props) {
             localStorage.setItem("login", true)
             localStorage.setItem("id", data.client._id)
             setCookies(true)
+            setStatusSignup(true)
+
         }
-        console.log(client)
+        if (data.message) {
+            setStatusSignup(false)
+            setMessagePassword(null)
+            setMessageAlreadyEmail(null)
+
+            data.message.map(msg => {
+
+                if (msg.email) {
+                    setMessageEmail(msg.email)
+                }
+                if (msg.password) {
+                    setMessagePassword(msg.password)
+                }
+            })
+        }
+        if (data.err) {
+            setStatusSignup(false)
+            setMessagePassword(null)
+            setMessageEmail(null)
+            setMessageAlreadyEmail(data.err)
+        }
+
+        // if (data.message && data.err) {
+        //     setStatusSignup(false)
+        //     setMessageEmail(null)
+        //     setMessageAlreadyEmail(data.err)
+        // }
+
     }
+
+
+
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -81,7 +118,7 @@ export default function Home(props) {
         };
         const response = await fetch("/clients/login", options);
         const data = await response.json()
-        console.log(data)
+        console.log(data, "This is data login")
         if (data.success) {
             // setStatus(true)
             setToken(data.token)
@@ -89,9 +126,14 @@ export default function Home(props) {
             localStorage.setItem("login", true)
             localStorage.setItem("id", data.client._id)
             setCookies(true)
+            setStatusLogin(true)
 
         } else {
-            alert("Your email or password are wrong or doesn't exist in our database")
+
+            setStatusLogin(false)
+
+
+            // alert("Your email or password is wrong or it doesn't exist in our database")
         }
 
 
@@ -99,9 +141,13 @@ export default function Home(props) {
 
 
     return (
+
+
+
         <div className="main-container">
             {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
-            {cookies && client && client.role === "User" ? <Redirect to="/account" /> : <div className="form-container">
+            {cookies && client && client.role === "User" ? <Redirect to="/account" /> : null}
+            <div className="form-container">
                 <div className="signup-form">
                     <h1>Sign up for your order</h1>
                     <form onSubmit={handleSignUp} className="signup">
@@ -117,8 +163,12 @@ export default function Home(props) {
                             <input type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} required />
                         </label>
 
+                        {!statusSignup && messageEmail ? <p>{messageEmail}</p> : null}
+                        {!statusSignup && messageAlreadyEmail ? <p>E-mail already exists</p> : null}
+
 
                         <label>Password:<input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} required /></label>
+                        {!statusSignup && messagePassword ? <p>{messagePassword}</p> : null}
                         <label>Phone:<input type="text" id="phone" name="phone" onChange={(e) => setPhone(e.target.value)} required /></label>
                         <label>Street and Number:
                             <input type="text" id="street" name="street" onChange={(e) => setStreet(e.target.value)} required />
@@ -140,6 +190,7 @@ export default function Home(props) {
 
                         <label>Password:<input type="password" id="password-login" name="password" onChange={(e) => setPassword(e.target.value)} required /></label>
                         <button type="submit">Log In</button>
+                        {!statusLogin ? <p>Wrong email or wrong password</p> : null}
                     </form>
                 </div>
             </div>

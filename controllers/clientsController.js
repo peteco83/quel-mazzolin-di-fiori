@@ -18,7 +18,7 @@ exports.getClient = async (req, res, next) => {
     try {
         const client = await Client.findById(id).populate("order").populate("product")
         if (!client) throw createError(404)
-        res.header("test", "123")
+        res.cookie("login", true)
         res.json({ success: true, client: client })
     }
     catch (err) {

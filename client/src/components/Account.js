@@ -29,7 +29,8 @@ export default function Account() {
     // }
 
     const getorders = () => {
-        fetch
+        let id =
+            fetch('/orders/')
     }
 
     return (

@@ -128,3 +128,8 @@ input {
     flex-direction: column;
     justify-content: center;
 }
+
+p {
+    font-size: 1ch;
+    color: red
+}
