@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Redirect } from "react-router-dom"
 import { ContextTotal } from './Context'
-import '../styles/app.css'
+import '../styles/login.css'
 
 export default function SignUp() {
 
-    const { setToken, client, setClient, isLogged, setIsLogged, token, cookies, setCookies } = useContext(ContextTotal)
+    const { setToken, client, setClient, cookies, setCookies } = useContext(ContextTotal)
     console.log("cookies:" + cookies)
 
     const [firstName, setFirstName] = useState(null)
@@ -15,8 +15,6 @@ export default function SignUp() {
     const [street, setStreet] = useState(null)
     const [zipCode, setZipCode] = useState(null)
     const [phone, setPhone] = useState(null)
-    const [error, setError] = useState("")
-    const [statusLogin, setStatusLogin] = useState(true)
     const [statusSignup, setStatusSignup] = useState(true)
     const [messageEmail, setMessageEmail] = useState("")
     const [messagePassword, setMessagePassword] = useState("")
@@ -91,8 +89,8 @@ export default function SignUp() {
             {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
             {cookies && client && client.role === "User" ? <Redirect to="/account" /> : null}
             <div className="signup-form">
-                <h1>Sign up for your order</h1>
-                <form onSubmit={handleSignUp} className="signup">
+                <h1>Sign up</h1>
+                <form onSubmit={handleSignUp} className="login">
                     <label>First Name:
                             <input type="text" id="first-name" name="firstName" onChange={(e) => setFirstName(e.target.value)} required />
                     </label>

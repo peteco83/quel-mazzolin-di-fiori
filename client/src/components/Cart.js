@@ -52,34 +52,31 @@ export default function Cart() {
 
     return (
         <div className="cart">
-            {status ? <Redirect to="/checkout" /> :
 
-                <div className="container-component-cart">
-                    {cart && cart.map((product) => {
+            {status ? <Redirect to="/checkout" /> :
+                <ul className="container-cart">
+                    {cart ? cart.map((product) => {
                         return (
 
-                            <div>
+                            <div className="product-card">
                                 <img src={product.product.img} alt={product.product.name} width="200" height="100" />
                                 <li>Type: {product.product.type}</li>
                                 <li>Name: {product.product.name}</li>
                                 <li>Price: {product.product.price}€</li>
-                                {/* <li>Quantity: {product.quantity}</li> */}
                                 <button onClick={deleteItem}>Remove</button>
                             </div>
 
                         )
-                    })}
-
-                    {cart && cart.length > 0 ?
-                        (<div>
-                            <h1>Total: {totalPrice}</h1>
-                            <button onClick={checkOut}>CheckOut</button>
-                        </div>
-                        ) : null}
-                </div>
-
+                    }) : <h1>Add your desired product first</h1>}
+                </ul>
             }
 
+
+            {cart && cart.length > 0 ?
+                (<div className="total">
+                    <h1>Total: {totalPrice} €</h1>
+                    <button onClick={checkOut}>CheckOut</button>
+                </div>) : null}
 
 
 

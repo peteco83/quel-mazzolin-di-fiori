@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+Tammudu+2|Pacifico&display=swap');
+
+.form-container{
+    height: 90vh;
+    width: 100vw;
+    /* background-color: rgba(255, 255, 255,0.9); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+p {
+    font-size: 1ch;
+    color: red
+}
+
+input {
+    width: 98%;
+    height: 2rem;
+}
+
+.login-form h1, .signup-form h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px
+}
+
+.login-form {
+    width: 20rem;
+    height: 30rem;
+    /* border-radius: 200px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border: 5px solid black;
+    font-size: 2ch;  
+    font-family: 'Montserrat', sans-serif;  
+    
+}
+
+form {
+    margin-bottom: 60px;
+}
+
+.signup-form {
+    width: 20rem;
+    height: 40rem;
+    /* border-radius: 200px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    border: 5px solid black;
+    font-size: 2ch;  
+    font-family: 'Montserrat', sans-serif;
+}
+
+form button {
+    margin-top: 10px;
+}

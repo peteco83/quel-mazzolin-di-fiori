@@ -50,10 +50,9 @@ export default function EachProduct(props) {
                         </div>
                     )) : null}
                 </ul>
-                : (
-                    <div>
-                        <h1>Please Login or Register to make your order</h1>
-                    </div>)}
+                :
+
+                <h1>Please Login or Register to make your order</h1>}
 
         </div>
     )

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Redirect } from "react-router-dom"
 import { ContextTotal } from './Context'
-import '../styles/app.css'
+import '../styles/login.css'
 
 const Login = () => {
 
@@ -48,19 +48,21 @@ const Login = () => {
         <div className="form-container">
             {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
             {cookies && client && client.role === "User" ? <Redirect to="/account" /> : null}
-            <div className="login-form">
-                <h1>Log in if you have an account</h1>
-                <form onSubmit={handleLogin} className="login">
+            <div className="loginoflogin">
+                <div className="login-form">
+                    <h1>Log in</h1>
+                    <form onSubmit={handleLogin} className="login">
 
-                    <label>E-Mail:
+                        <label>E-Mail:
                             <input type="email" id="email-login" name="email" onChange={(e) => setEmail(e.target.value)} required />
-                    </label>
+                        </label>
 
 
-                    <label>Password:<input type="password" id="password-login" name="password" onChange={(e) => setPassword(e.target.value)} required /></label>
-                    <button type="submit">Log In</button>
-                    {!statusLogin ? <p>Wrong email or wrong password</p> : null}
-                </form>
+                        <label>Password:<input type="password" id="password-login" name="password" onChange={(e) => setPassword(e.target.value)} required /></label>
+                        <button type="submit">Log In</button>
+                        {!statusLogin ? <p>Wrong email or wrong password</p> : null}
+                    </form>
+                </div>
             </div>
         </div>
     )

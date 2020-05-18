@@ -74,10 +74,10 @@ nav ul {
 }
 
 
-.login-form {
+/* .login-form {
     width: 20rem;
     height: 40rem;
-    /* border-radius: 200px; */
+    border-radius: 200px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -86,7 +86,7 @@ nav ul {
     border: 5px solid black;
     font-size: 2ch;  
     font-family: sans-serif;  
-}
+} */
 
 .signup-form {
     width: 20rem;
@@ -108,15 +108,15 @@ nav ul {
     
 }
 
-.login-form h1 {
+/* .login-form h1 {
     font-family: sans-serif;
     font-size: large;
-}
+} */
 
-input {
+/* input {
     width: 98%;
     height: 2rem;
-}
+} */
 
 .signup {
     display: flex;
@@ -125,15 +125,15 @@ input {
     /* justify-content: space-around; */
 }
 
-.form-container {
+/* .form-container {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80vw;
     height: 100vh;
     
-}
-.login {
+} */
+/* .login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -142,5 +142,5 @@ input {
 p {
     font-size: 1ch;
     color: red
-}
+} */
 

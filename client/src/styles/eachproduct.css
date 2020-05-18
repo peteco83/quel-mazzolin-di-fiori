@@ -6,7 +6,7 @@
     background-color: rgba(255, 255, 255,0.9);
     display: flex;
     justify-content: center;
-    align-items: center;
+    
 }
 
 .container-products {
@@ -54,4 +54,8 @@
 
 .product-card :nth-child(2) {
     padding-top: 10px;
+}
+
+.eachproduct h1 {
+    padding-top: 100px;
 }
