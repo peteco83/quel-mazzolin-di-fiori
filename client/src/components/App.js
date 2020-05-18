@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/app.css'
 import Products from './Products';
-import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom"
+import { BrowserRouter, NavLink, Route, Switch, Link } from "react-router-dom"
 import Home from './Home';
 import { ContextTotal } from "./Context"
 import Cart from './Cart'
@@ -9,6 +9,8 @@ import Account from './Account'
 import EachProduct from './EachProduct'
 import CheckOut from './CheckOut'
 import Admin from './Admin'
+import Login from './Login';
+import SignUp from './SignUp';
 
 
 function App() {
@@ -54,16 +56,22 @@ function App() {
             <nav>
               <ul>
                 <li>
-                  <NavLink activeStyle={{ color: "white" }} to="/">Home</NavLink>
+                  <Link activeStyle={{ color: "white" }} to="/">Home</Link>
                 </li>
                 <li>
-                  <NavLink activeStyle={{ color: "white" }} to="/products">Products</NavLink>
+                  <Link activeStyle={{ color: "white" }} to="/products">Products</Link>
                 </li>
                 <li>
-                  <NavLink activeStyle={{ color: "white" }} to="/cart">Your Cart</NavLink>
+                  <Link activeStyle={{ color: "white" }} to="/cart">Your Cart</Link>
                 </li>
                 <li>
-                  <NavLink activeStyle={{ color: "white" }} to="/account">Your Account</NavLink>
+                  <Link activeStyle={{ color: "white" }} to="/account">Your Account</Link>
+                </li>
+                <li>
+                  <Link activeStyle={{ color: "white" }} to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link activeStyle={{ color: "white" }} to="/register">Register</Link>
                 </li>
               </ul>
             </nav>
@@ -82,6 +90,9 @@ function App() {
             <Route exact path="/account" component={Account} />
             <Route exact path="/checkout" component={CheckOut} />
             <Route exact path="/admin" component={Admin} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={SignUp} />
+
 
           </Switch>
 

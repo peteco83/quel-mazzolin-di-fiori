@@ -1,9 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react'
 import { ContextTotal } from './Context'
+import "../styles/eachproduct.css"
 
 
 export default function EachProduct(props) {
-    const { products, filteredProduct, setFilteredProduct, cart, setCart, client } = useContext(ContextTotal)
+    const { products, filteredProduct, setFilteredProduct, cart, setCart, client, cookies } = useContext(ContextTotal)
     console.log(props)
     const [quantity, setQuantity] = useState(1)
 
@@ -33,33 +34,27 @@ export default function EachProduct(props) {
     }
 
     return (
-        <div>
-            <ul className="container-products">
-                {filteredProduct && filteredProduct.length > 0 ? filteredProduct.map((product, i) => (
-                    <div key={i}>
-                        <img src={product.img} alt={product.name} width="200" height="100" />
-                        <li>{product.type}</li>
-                        <li>{product.name}</li>
-                        <li>{product.price}€</li>
-                        {/* <li>Quantity: <input type="number" id="quantity" name="quantity" onChange={(e) => setQuantity(e.target.value)} required></input></li> */}
-                        <button onClick={() => {
-                            addToCart(product)
-                        }
+        <div className="eachproduct">
+            {cookies ?
+                <ul className="container-products">
+                    {filteredProduct && filteredProduct.length > 0 ? filteredProduct.map((product, i) => (
+                        <div key={i} className="product-card">
+                            <img src={product.img} alt={product.name} width="200" height="100" />
 
-                        }
-                        >Add to Cart</button>
+                            <li>Type: {product.type}</li>
+                            <li>Name: {product.name}</li>
+                            <li>Price: {product.price} €</li>
 
+                            <button onClick={() => { addToCart(product) }}>Add to Cart</button>
 
-
-                    </div>
-                )) : (
-                        <div>
-                            <h1>
-                                PLEASE LOGIN FIRST OR CREATE AN ACCOUNT
-                            </h1>
                         </div>
-                    )}
-            </ul>
+                    )) : null}
+                </ul>
+                : (
+                    <div>
+                        <h1>Please Login or Register to make your order</h1>
+                    </div>)}
+
         </div>
     )
 }

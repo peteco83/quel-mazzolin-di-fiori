@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ContextTotal } from './Context'
-import '../styles/products.css'
+import '../styles/cart.css'
 import { Redirect } from 'react-router-dom';
 
 export default function Cart() {
@@ -51,10 +51,10 @@ export default function Cart() {
     }
 
     return (
-        <div className="container-products">
+        <div className="cart">
             {status ? <Redirect to="/checkout" /> :
 
-                <div className="container-products">
+                <div className="container-component-cart">
                     {cart && cart.map((product) => {
                         return (
 
@@ -75,15 +75,7 @@ export default function Cart() {
                             <h1>Total: {totalPrice}</h1>
                             <button onClick={checkOut}>CheckOut</button>
                         </div>
-                        ) :
-
-                        (<div>
-                            <h1>
-                                PLEASE ADD THE DESIRED PRODUCTS TO THE CART
-                            </h1>
-                        </div>)
-
-                    }
+                        ) : null}
                 </div>
 
             }

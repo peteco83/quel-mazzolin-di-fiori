@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo+Tammudu+2|Pacifico&display=swap');
 
-.products {
+.products{
+    height: 90vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255,0.9);
+
+}
+
+.container-component-products {
     display: flex;
-    background-color: white;
-    width: 80%;
+    margin: 0 auto;
+    /* background-color: rgba(255, 255, 255,0.5); */
+    height: 90vh;
+    width: 80vw;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
@@ -105,31 +114,3 @@
         transition-delay: 0.2s;
     } 
  
-.container-products {
-    display: flex;
-    flex-wrap: wrap;
-    width: 80vw;
-    height: 100vh;
-    justify-content: space-around;
-    padding-top: 50px;
-    background-color: white;
-    
-    
-}
-
-.list-products {
-    justify-content: space-around;
-    flex-direction: row;
-}
-
-.container-products {
-    font-size: 0.8rem;
-    text-align: left;
-    font-family: 'Baloo Tammudu 2', cursive;
-    list-style: none;
-}
-
-.container-products h1 {
-    font-family: 'Baloo Tammudu 2', cursive;
-    font-size: 3rem;
-}

@@ -1,26 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { Redirect } from "react-router-dom"
 import { ContextTotal } from './Context'
+import '../styles/home.css'
 
 
-export default function Home(props) {
+export default function Home() {
 
-    const { setToken, client, setClient, isLogged, setIsLogged, token, cookies, setCookies } = useContext(ContextTotal)
+    const { client, setClient, cookies } = useContext(ContextTotal)
     console.log("cookies:" + cookies)
-
-    const [firstName, setFirstName] = useState(null)
-    const [lastName, setLastName] = useState(null)
-    const [email, setEmail] = useState(null)
-    const [password, setPassword] = useState(null)
-    const [street, setStreet] = useState(null)
-    const [zipCode, setZipCode] = useState(null)
-    const [phone, setPhone] = useState(null)
-    const [error, setError] = useState("")
-    const [statusLogin, setStatusLogin] = useState(true)
-    const [statusSignup, setStatusSignup] = useState(true)
-    const [messageEmail, setMessageEmail] = useState("")
-    const [messagePassword, setMessagePassword] = useState("")
-    const [messageAlreadyEmail, setMessageAlreadyEmail] = useState("")
 
     useEffect(() => {
         let id = localStorage.getItem("id")
@@ -37,109 +24,6 @@ export default function Home(props) {
 
     console.log(client, "from Homepage")
 
-
-    const handleSignUp = async (e) => {
-        e.preventDefault()
-        const clientData = {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            password: password,
-            phoneNumber: phone,
-            street: street,
-            zipCode: zipCode
-        };
-        const options = {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(clientData)
-        };
-        const response = await fetch("/clients", options);
-        const data = await response.json()
-        console.log(data, "This is data signup")
-        if (data.success) {
-            // setStatus(true)
-            setToken(data.token)
-            setClient(data.client)
-            // setIsLogged(true)
-            localStorage.setItem("login", true)
-            localStorage.setItem("id", data.client._id)
-            setCookies(true)
-            setStatusSignup(true)
-
-        }
-        if (data.message) {
-            setStatusSignup(false)
-            setMessagePassword(null)
-            setMessageAlreadyEmail(null)
-
-            data.message.map(msg => {
-
-                if (msg.email) {
-                    setMessageEmail(msg.email)
-                }
-                if (msg.password) {
-                    setMessagePassword(msg.password)
-                }
-            })
-        }
-        if (data.err) {
-            setStatusSignup(false)
-            setMessagePassword(null)
-            setMessageEmail(null)
-            setMessageAlreadyEmail(data.err)
-        }
-
-        // if (data.message && data.err) {
-        //     setStatusSignup(false)
-        //     setMessageEmail(null)
-        //     setMessageAlreadyEmail(data.err)
-        // }
-
-    }
-
-
-
-
-    const handleLogin = async (e) => {
-        e.preventDefault()
-        const loginData = {
-            email: email,
-            password: password,
-        }
-        const options = {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(loginData)
-        };
-        const response = await fetch("/clients/login", options);
-        const data = await response.json()
-        console.log(data, "This is data login")
-        if (data.success) {
-            // setStatus(true)
-            setToken(data.token)
-            setClient(data.client)
-            localStorage.setItem("login", true)
-            localStorage.setItem("id", data.client._id)
-            setCookies(true)
-            setStatusLogin(true)
-
-        } else {
-
-            setStatusLogin(false)
-
-
-            // alert("Your email or password is wrong or it doesn't exist in our database")
-        }
-
-
-    }
-
-
     return (
 
 
@@ -147,54 +31,14 @@ export default function Home(props) {
         <div className="main-container">
             {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
             {cookies && client && client.role === "User" ? <Redirect to="/account" /> : null}
-            <div className="form-container">
-                <div className="signup-form">
-                    <h1>Sign up for your order</h1>
-                    <form onSubmit={handleSignUp} className="signup">
-                        <label>First Name:
-                            <input type="text" id="first-name" name="firstName" onChange={(e) => setFirstName(e.target.value)} required />
-                        </label>
+            <div className="home-main">
 
-
-                        <label>Last Name:
-                        <input type="text" id="last-name" name="lastName" onChange={(e) => setLastName(e.target.value)} required /></label>
-
-                        <label>E-Mail:
-                            <input type="email" id="email" name="email" onChange={(e) => setEmail(e.target.value)} required />
-                        </label>
-
-                        {!statusSignup && messageEmail ? <p>{messageEmail}</p> : null}
-                        {!statusSignup && messageAlreadyEmail ? <p>E-mail already exists</p> : null}
-
-
-                        <label>Password:<input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)} required /></label>
-                        {!statusSignup && messagePassword ? <p>{messagePassword}</p> : null}
-                        <label>Phone:<input type="text" id="phone" name="phone" onChange={(e) => setPhone(e.target.value)} required /></label>
-                        <label>Street and Number:
-                            <input type="text" id="street" name="street" onChange={(e) => setStreet(e.target.value)} required />
-                        </label>
-
-
-                        <label>Zipcode:<input type="text" id="zipcode" name="zipCode" onChange={(e) => setZipCode(e.target.value)} required /></label>
-                        <button type="submit">Sign Up</button>
-                    </form>
-                </div>
-                <div className="login-form">
-                    <h1>Log in if you have an account</h1>
-                    <form onSubmit={handleLogin} className="login">
-
-                        <label>E-Mail:
-                            <input type="email" id="email-login" name="email" onChange={(e) => setEmail(e.target.value)} required />
-                        </label>
-
-
-                        <label>Password:<input type="password" id="password-login" name="password" onChange={(e) => setPassword(e.target.value)} required /></label>
-                        <button type="submit">Log In</button>
-                        {!statusLogin ? <p>Wrong email or wrong password</p> : null}
-                    </form>
+                <div className="home-container">
+                    <h1>Benvenuti in Italia</h1>
+                    <h1>Benvenuti al Ristorante "Quel Mazzolin di Fiori"</h1>
+                    <h2>Please register or login to make your order</h2>
                 </div>
             </div>
-            }
 
         </div>
     )
