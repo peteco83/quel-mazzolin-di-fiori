@@ -29,16 +29,27 @@ export default function Home() {
 
 
         <div className="main-container">
-            {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
-            {cookies && client && client.role === "User" ? <Redirect to="/account" /> : null}
-            <div className="home-main">
+            {/* {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
+            {cookies && client && client.role === "User" ? <Redirect to="/account" /> : null} */}
+            {/* {cookies && client ? <Redirect to="/account" /> : null} */}
+            {cookies ? (<div className="home-main">
 
                 <div className="home-container">
                     <h1>Benvenuti in Italia</h1>
                     <h1>Benvenuti al Ristorante "Quel Mazzolin di Fiori"</h1>
-                    <h2>Please register or login to make your order</h2>
                 </div>
-            </div>
+            </div>) :
+                (
+                    <div className="home-main">
+
+                        <div className="home-container">
+                            <h1>Benvenuti in Italia</h1>
+                            <h1>Benvenuti al Ristorante "Quel Mazzolin di Fiori"</h1>
+                            <h2>Please register or login to make your order</h2>
+                        </div>
+                    </div>
+                )}
+
 
         </div>
     )

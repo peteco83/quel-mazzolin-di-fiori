@@ -44,8 +44,7 @@ export default function Admin() {
                     <button onClick={getOrders}>Get all orders</button>
 
                     <button>Add a Product</button>
-                    <button onClick={() => logout()}>logout</button>
-                </div> : <Redirect to="/" />}
+                </div> : null}
         </div>
     )
 }

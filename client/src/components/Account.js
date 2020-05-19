@@ -10,33 +10,10 @@ export default function Account() {
     console.log(client, "from account");
     console.log(order)
 
-    // useEffect(() => {
-    //     let id = localStorage.getItem("id")
-    //     if (id) {
-    //         fetch(`/clients/${id}`)
-    //             .then(res => res.json())
-    //             .then(client =>
-    //                 setClient(client))
-    //     }
-    // }, [])
-
-
-    // const logout = () => {
-    //     fetch("/clients/logout")
-    //     localStorage.clear("login")
-    //     setCookies(false)
-
-    // }
-
-    const getorders = () => {
-        let id =
-            fetch('/orders/')
-    }
-
     return (
         <div>
-            {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
-            {cookies && client && client.role === "User" ?
+            {/* {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null} */}
+            {cookies ?
 
                 <div className="account">
                     <h1>Hi {client.firstName}</h1>
@@ -46,14 +23,13 @@ export default function Account() {
                     <h3>Email: {client.email}</h3>
                     <h3>Address: {client.street}</h3>
                     <h3>Zipcode: {client.zipCode}</h3>
-                    <h3>Your Orders: </h3>
+                    <h3>Your Orders:</h3>
+                    {/* {client.role === "Admin" ? <button onClick={() => props.history.push("Admin")}>Admin</button> : null} */}
+                    {/* para usar redirect en una funcion hay q usar props.history.push("el route donde queremos mandarlo ")  */}
 
-                    <button onClick={() => logout()}>logout</button>
                 </div>
 
-                : <Redirect to="/" />}
-
-            {/* <button onClick={logout}>logout</button> */}
+                : null}
         </div>
     )
 }

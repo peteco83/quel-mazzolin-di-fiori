@@ -86,6 +86,7 @@ export default function SignUp() {
 
     return (
         <div className="form-container">
+
             {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
             {cookies && client && client.role === "User" ? <Redirect to="/account" /> : null}
             <div className="signup-form">

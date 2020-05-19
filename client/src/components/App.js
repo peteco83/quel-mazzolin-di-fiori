@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/app.css'
 import Products from './Products';
-import { BrowserRouter, NavLink, Route, Switch, Link } from "react-router-dom"
+import { BrowserRouter, NavLink, Route, Switch, Link, Redirect } from "react-router-dom"
 import Home from './Home';
 import { ContextTotal } from "./Context"
 import Cart from './Cart'
@@ -26,7 +26,6 @@ function App() {
   const [cookies, setCookies] = useState(false)
   const [status, setStatus] = useState(false)
   const [order, setOrder] = useState([])
-
 
 
   useEffect(() => {
@@ -58,21 +57,34 @@ function App() {
                 <li>
                   <Link activeStyle={{ color: "white" }} to="/">Home</Link>
                 </li>
-                <li>
+                {cookies ? <li>
                   <Link activeStyle={{ color: "white" }} to="/products">Products</Link>
-                </li>
-                <li>
-                  <Link activeStyle={{ color: "white" }} to="/cart">Your Cart</Link>
-                </li>
-                <li>
+                </li> : null}
+
+                {cookies && client && client.role === "User" ? <li>
                   <Link activeStyle={{ color: "white" }} to="/account">Your Account</Link>
-                </li>
-                <li>
+                </li> : null}
+
+                {cookies ? <li>
+                  <Link activeStyle={{ color: "white" }} to="/cart">Your Cart</Link>
+                </li> : null}
+
+                {cookies && client && client.role === "Admin" ? <li>
+                  <Link activeStyle={{ color: "white" }} to="/admin">Admin</Link>
+                </li> : null}
+
+                {!cookies ? <li>
                   <Link activeStyle={{ color: "white" }} to="/login">Login</Link>
-                </li>
-                <li>
+                </li> : null}
+
+                {!cookies ? <li>
                   <Link activeStyle={{ color: "white" }} to="/register">Register</Link>
-                </li>
+                </li> : null}
+
+                {cookies ? <li>
+                  <Link onClick={logout} activeStyle={{ color: "white" }} to="/">Logout</Link>
+                </li> : null}
+
               </ul>
             </nav>
           </header>
