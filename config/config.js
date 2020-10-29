@@ -3,7 +3,7 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 const config = {
-    env: env.NODE_ENV || "development"
+    env: env.NODE_ENV || "production"
 }
 
 const devConfig = {

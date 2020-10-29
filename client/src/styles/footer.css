@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  height: 7%;
+  background-color: white;
+  width: 100%;
+  font-family: "Montserrat";
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid #c1c1c1;
+}
+
+.footer-content {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo {
+  font-family: "Pacifico", cursive;
+}
+
+.year {
+  padding-left: 50px;
+}
+
+.icon {
+  font-size: 2rem;
+  /* color: rgba(238, 130, 238, 0.5); */
+  /* opacity: 0; */
+}
+
+.contact-and-icon {
+  display: flex;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 6px;
+}
+
+.link:visited {
+  color: black;
+}
+
+.link:hover {
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  display: flex;
+  border-radius: 2.5px;
+  padding: 2.5px;
+  transition: 0.2s ease-in-out;
+}
