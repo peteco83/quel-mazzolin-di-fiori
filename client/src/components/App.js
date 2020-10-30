@@ -99,18 +99,20 @@ function App() {
       <HashRouter>
         <div className="App">
           <header>
-            <Link className="logo-link" to="/" onClick={handleClick}>
-              <h1 className="logo">Quel Mazzolin di Fiori</h1>
-            </Link>
-            {menuMobile ? (
-              <Link className="menu-icon" onClick={handleClick}>
-                <FontAwesomeIcon
-                  className={!menuOn ? "icon" : "icon-rotate"}
-                  icon={faBars}
-                />
+            <div className="main-logo">
+              <Link className="logo-link" to="/" onClick={handleClick}>
+                <h1 className="logo">Quel Mazzolin di Fiori</h1>
               </Link>
-            ) : null}
-            <nav>
+              {menuMobile ? (
+                <Link className="menu-icon" onClick={handleClick}>
+                  <FontAwesomeIcon
+                    className={!menuOn ? "icon" : "icon-rotate"}
+                    icon={faBars}
+                  />
+                </Link>
+              ) : null}
+            </div>
+            <nav className="nav-options">
               <ul className={menuOn ? "nav-menu active" : "nav-menu"}>
                 {cookies ? (
                   <li>
@@ -196,7 +198,7 @@ function App() {
               <h2 className="year">2020</h2>
 
               <div className="contact-and-icon">
-                <FontAwesomeIcon className="icon" icon={faCommentAlt} />
+                <FontAwesomeIcon className="comment" icon={faCommentAlt} />
 
                 <h2>
                   <Link className="link" to="/contact">

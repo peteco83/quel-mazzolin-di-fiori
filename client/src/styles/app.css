@@ -5,15 +5,14 @@
 * {
   margin: 0;
   padding: 0;
-  /* overflow: hidden; */
+  overflow: hidden;
   font-family: "Montserrat";
+  box-sizing: border-box;
 }
 
-.logo {
+/* .logo {
   font-family: "Pacifico", cursive;
-  /* text-align: center; */
-  /* margin-top: 10px; */
-}
+} */
 
 nav li {
   list-style: none;
@@ -26,10 +25,9 @@ nav li {
 }
 
 header {
-  /* display: flex; */
   background-color: #ffffff;
   height: 10vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -37,8 +35,8 @@ header {
 }
 
 .App {
-  background-image: url("../images/pizza-3007395_1920.jpg");
-  width: auto;
+  background-image: url("../images/pizza.jpg");
+  width: 100vw;
   height: 100vh;
   /* background-position: center; */
   /* background-size: cover; */
@@ -46,37 +44,41 @@ header {
   flex-direction: column;
 }
 
-/* .nav-desktop {
-  width: 50%;
-  color: white;
-  display: flex;
-} */
-
 nav ul {
   /* height: 50%; */
   display: flex;
   flex-direction: row;
-  width: 50%;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  /* width: 100%; */
 }
 
-nav ul li {
-  margin-left: 30px;
+nav .link {
+  margin-left: 50px;
 }
 
 .link {
+  text-decoration: none;
+  font-weight: bold;
+  /* margin-left: 50px; */
   color: black;
+}
+
+.link:visited {
+  color: black;
+}
+
+.main-logo {
+  text-align: center;
 }
 
 @media screen and (max-width: 960px) {
   .icon {
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 25px;
     color: black;
-    /* width: 200px; */
-    /* height: auto; */
     transition: 0.5s;
+    font-size: 1.5rem;
   }
 
   .icon-rotate {
@@ -86,31 +88,60 @@ nav ul li {
     color: black;
     transition: 0.5s;
     transform: rotate(90deg);
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .nav-menu {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     width: 100vw;
-    height: 100vh;
+    height: 83vh;
     position: absolute;
-    top: 60px;
-    left: -100%;
+    top: 85px;
+    right: -100%;
     opacity: 1;
     transition: all 0.5s ease;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
   }
 
   .nav-menu.active {
-    background: white;
-    left: 0;
+    background: rgb(226, 224, 224);
+    right: 0;
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
   }
 
-  .link {
-    font-size: 2rem;
+  nav .link {
+    font-size: 1.5rem;
+  }
+
+  nav li {
+    padding-top: 100px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    background-image: url("../images/pizza_mobile.jpg");
+    width: 100vw;
+    height: 92vh;
+  }
+}
+
+@media screen and (min-width: 961px) {
+  .link:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    display: flex;
+    border-radius: 2.5px;
+    padding: 2.5px;
+    transition: 0.2s ease-in-out;
   }
 }
