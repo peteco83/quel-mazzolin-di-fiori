@@ -3,6 +3,7 @@ import { ContextTotal } from "./Context";
 import Fade from "react-reveal/Fade";
 import "../styles/home.css";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   const { client, setClient, cookies } = useContext(ContextTotal);
@@ -26,8 +27,13 @@ export default function HeroSection() {
               <h2>Please register or login to make your order</h2>
             </div>
             <div className="btn-log-reg">
-              <Button className="buttons">Sign Up</Button>
-              <Button className="buttons">Login</Button>
+              <Link className="link" to="/login">
+                <Button className="buttons">Login</Button>
+              </Link>
+
+              <Link className="link" to="/register">
+                <Button className="buttons">Sign Up </Button>
+              </Link>
             </div>
           </Fade>
         </div>

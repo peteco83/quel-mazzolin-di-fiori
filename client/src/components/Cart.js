@@ -3,6 +3,7 @@ import { ContextTotal } from "./Context";
 import "../styles/eachproduct.css";
 import { Redirect } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import ParticlesBg from "particles-bg";
 
 export default function Cart() {
   const {
@@ -59,39 +60,41 @@ export default function Cart() {
 
   return (
     <div className="cart">
-      {status ? (
-        <Redirect to="/checkout" />
-      ) : (
-        <ul className="container-products">
-          {cart ? (
-            cart.map((product) => {
-              return (
-                <div className="product-card">
-                  <img
-                    src={product.product.img}
-                    alt={product.product.name}
-                    width="200"
-                    height="100"
-                  />
-                  <li>Type: {product.product.type}</li>
-                  <li>Name: {product.product.name}</li>
-                  <li>Price: {product.product.price}€</li>
-                  <button onClick={deleteItem}>Remove</button>
-                </div>
-              );
-            })
-          ) : (
-            <h1>Add your desired product first</h1>
-          )}
-        </ul>
-      )}
-
+      <ParticlesBg type="tadpole" bg={true} />
       {cart && cart.length > 0 ? (
         <div className="total">
           <h1>Total: {totalPrice} €</h1>
           <Button onClick={checkOut}>CheckOut</Button>
         </div>
       ) : null}
+      {status ? (
+        <Redirect to="/checkout" />
+      ) : (
+        <div className="cart-container">
+          <ul className="container-products">
+            {cart ? (
+              cart.map((product) => {
+                return (
+                  <div className="product-card">
+                    <img
+                      src={product.product.img}
+                      alt={product.product.name}
+                      width="200"
+                      height="100"
+                    />
+                    <li>Type: {product.product.type}</li>
+                    <li>Name: {product.product.name}</li>
+                    <li>Price: {product.product.price}€</li>
+                    <button onClick={deleteItem}>Remove</button>
+                  </div>
+                );
+              })
+            ) : (
+              <h1>Add your desired product first</h1>
+            )}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }

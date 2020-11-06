@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ContextTotal } from "./Context";
-import { Link, Route, Switch, HashRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/navbar.css";
 
@@ -106,7 +106,12 @@ export default function Header() {
 
           {cookies ? (
             <li>
-              <Link className="link" onClick={logout} to="/">
+              <Link
+                className="link"
+                onClick={logout}
+                to="/"
+                onClick={closeMobileMenu}
+              >
                 Logout
               </Link>
             </li>

@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import { ContextTotal } from "./Context";
 import "../styles/checkout.css";
+import ParticlesBg from "particles-bg";
 
 export default function CheckOut() {
   const { status, setStatus } = useContext(ContextTotal);
@@ -11,6 +12,7 @@ export default function CheckOut() {
 
   return (
     <div className="checkout">
+      <ParticlesBg type="tadpole" bg={true} />
       <h1>
         Thank you for <br />
         your Purchase

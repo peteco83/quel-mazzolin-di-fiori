@@ -3,6 +3,7 @@ import { ContextTotal } from "./Context";
 import { Redirect } from "react-router-dom";
 import "../styles/account.css";
 import Fade from "react-reveal/Fade";
+import ParticlesBg from "particles-bg";
 
 export default function Account() {
   const { setCookies, cookies, client, order, setClient, logout } = useContext(
@@ -14,6 +15,8 @@ export default function Account() {
 
   return (
     <div className="account-container">
+      <ParticlesBg type="tadpole" bg={true} />
+
       {/* {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null} */}
       {cookies ? (
         <Fade top>
