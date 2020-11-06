@@ -2,15 +2,12 @@
 @import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  height: 7%;
+  height: 100px;
   background-color: white;
   width: 100%;
   display: flex;
   justify-content: center;
   border-top: 2px solid #c1c1c1;
-  z-index: 10;
 }
 
 .footer-content {
@@ -42,7 +39,7 @@
   .footer-content .logo,
   .year,
   .link {
-    font-size: 0.7rem;
+    font-size: 1.7rem;
   }
 
   .year {

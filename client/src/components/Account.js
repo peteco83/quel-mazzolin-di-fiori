@@ -32,7 +32,7 @@ export default function Account() {
               <h3>Address: {client.street}</h3>
               <h3>Zipcode: {client.zipCode}</h3>
             </div>
-            <h3 className="orders">Your Orders:</h3>
+            {/* <h3 className="orders">Your Orders:</h3> */}
             {/* {client.role === "Admin" ? <button onClick={() => props.history.push("Admin")}>Admin</button> : null} */}
             {/* para usar redirect en una funcion hay q usar props.history.push("el route donde queremos mandarlo ")  */}
           </div>

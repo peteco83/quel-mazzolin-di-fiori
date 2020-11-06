@@ -1,8 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Redirect } from "react-router-dom";
 import { ContextTotal } from "./Context";
-import Fade from "react-reveal/Fade";
 import "../styles/home.css";
+import HeroSection from "./HeroSection";
+import Footer from "../components/Footer";
+import About from "./About";
+import Contact from "./Contact";
 
 export default function Home() {
   const { client, setClient, cookies } = useContext(ContextTotal);
@@ -23,30 +25,11 @@ export default function Home() {
   console.log(client, "from Homepage");
 
   return (
-    <div className="main-container">
-      {/* {cookies && client && client.role === "Admin" ? <Redirect to="/admin" /> : null}
-            {cookies && client && client.role === "User" ? <Redirect to="/account" /> : null} */}
-      {/* {cookies && client ? <Redirect to="/account" /> : null} */}
-      {cookies ? (
-        <div className="home-main">
-          <Fade top>
-            <div className="home-container">
-              <h1>Benvenuti in Italia</h1>
-              <h1>Benvenuti al Ristorante "Quel Mazzolin di Fiori"</h1>
-            </div>
-          </Fade>
-        </div>
-      ) : (
-        <div className="home-main">
-          <Fade top>
-            <div className="home-container">
-              <h1>Benvenuti in Italia</h1>
-              <h1>Benvenuti al Ristorante "Quel Mazzolin di Fiori"</h1>
-              <h2>Please register or login to make your order</h2>
-            </div>
-          </Fade>
-        </div>
-      )}
-    </div>
+    <>
+      <HeroSection />
+      <About />
+      <Contact />
+      <Footer />
+    </>
   );
 }

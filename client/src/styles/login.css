@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css?family=Baloo+Tammudu+2|Pacifico&display=swap");
 
 .form-container {
-  height: 90vh;
+  height: 100vh;
   width: 100vw;
   margin: 0 auto;
   /* background-color: rgba(255, 255, 255,0.9); */
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("../images/pizza.jpg");
 }
 
 .login {
@@ -22,7 +23,7 @@ p {
 }
 
 input {
-  width: 94%;
+  width: 100%;
   height: 2rem;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -48,6 +49,7 @@ textarea {
   padding: 30px;
   /* height: 20rem; */
   /* border-radius: 200px; */
+  width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -66,6 +68,8 @@ form {
   padding: 30px;
   /* height: 20rem; */
   /* border-radius: 200px; */
+  width: 90%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -96,4 +100,18 @@ h4 {
   padding-bottom: 20px;
   /* margin-top: -30px; */
   text-align: center;
+}
+
+.form-container {
+}
+
+@media screen and (min-width: 769px) {
+  .login-form,
+  .signup-form {
+    width: 20%;
+  }
+
+  .signup-form {
+    height: 60%;
+  }
 }
