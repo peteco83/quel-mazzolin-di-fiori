@@ -108,9 +108,11 @@ export default function Header() {
             <li>
               <Link
                 className="link"
-                onClick={logout}
+                onClick={() => {
+                  logout();
+                  closeMobileMenu();
+                }}
                 to="/"
-                onClick={closeMobileMenu}
               >
                 Logout
               </Link>
